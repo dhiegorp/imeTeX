@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16cm"
+   height="10cm"
+   viewBox="-1 -15 16 10"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45"
+   sodipodi:docname="Digital.signal.svg"
+   sodipodi:docbase="/media/sda5/Documentos/Mestrado/Dissertacao/Escrito/book_rafa/svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true">
+  <metadata
+     id="metadata61">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs59" />
+  <sodipodi:namedview
+     inkscape:window-height="725"
+     inkscape:window-width="1280"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="1.1486444"
+     inkscape:cx="283.46457"
+     inkscape:cy="177.16536"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:current-layer="svg2" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #000000"
+     x1="0"
+     y1="-6"
+     x2="14.7764"
+     y2="-6"
+     id="line4" />
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #000000"
+     points="14.3882,-5.75 14.8882,-6 14.3882,-6.25 "
+     id="polyline6" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #000000"
+     x1="1"
+     y1="-5"
+     x2="1"
+     y2="-13.7764"
+     id="line8" />
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #000000"
+     points="1.25,-13.3882 1,-13.8882 0.75,-13.3882 "
+     id="polyline10" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="1"
+     y1="-7"
+     x2="14"
+     y2="-7"
+     id="line12" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="1"
+     y1="-8"
+     x2="14"
+     y2="-8"
+     id="line14" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="1"
+     y1="-9"
+     x2="14"
+     y2="-9"
+     id="line16" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="1"
+     y1="-10"
+     x2="14"
+     y2="-10"
+     id="line18" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="1"
+     y1="-11"
+     x2="14"
+     y2="-11"
+     id="line20" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="1"
+     y1="-12"
+     x2="14"
+     y2="-12"
+     id="line22" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="1"
+     y1="-13"
+     x2="14"
+     y2="-13"
+     id="line24" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="2"
+     y1="-6"
+     x2="2"
+     y2="-13"
+     id="line26" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="3"
+     y1="-6"
+     x2="3"
+     y2="-13"
+     id="line28" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="4"
+     y1="-6"
+     x2="4"
+     y2="-13"
+     id="line30" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="5"
+     y1="-6"
+     x2="5"
+     y2="-13"
+     id="line32" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="6"
+     y1="-6"
+     x2="6"
+     y2="-13"
+     id="line34" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="7"
+     y1="-6"
+     x2="7"
+     y2="-13"
+     id="line36" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="8"
+     y1="-6"
+     x2="8"
+     y2="-13"
+     id="line38" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="9"
+     y1="-6"
+     x2="9"
+     y2="-13"
+     id="line40" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="10"
+     y1="-6"
+     x2="10"
+     y2="-13"
+     id="line42" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="11"
+     y1="-6"
+     x2="11"
+     y2="-13"
+     id="line44" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="12"
+     y1="-6"
+     x2="12"
+     y2="-13"
+     id="line46" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="13"
+     y1="-6"
+     x2="13"
+     y2="-13"
+     id="line48" />
+  <line
+     style="fill: none; fill-opacity:0; stroke-width: 0.05; stroke-dasharray: 0.2; stroke: #000000"
+     x1="14"
+     y1="-6"
+     x2="14"
+     y2="-13"
+     id="line50" />
+  <text
+     style="font-size:0.98403692px;font-style:normal;font-weight:normal;text-anchor:start;fill:#000000;font-family:sans"
+     x="13.693761"
+     y="-5.1719904"
+     id="text52">t</text>
+  <path
+     style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #c1c1c1"
+     d="M 1 -6 C 1.2988,-6 2,-15 4,-10 C 6,-5 7,-17 9,-11 C 11,-5 12,-13 14,-9"
+     id="path54" />
+  <polyline
+     style="fill: none; fill-opacity:0; stroke-width: 0.1; stroke: #ff0000"
+     points="1,-6 2,-6 2,-10 3,-10 3,-11 4,-11 4,-10 5,-10 5,-9 6,-9 6,-10 7,-10 7,-12 8,-12 8,-13 9,-13 9,-11 10,-11 10,-9 12,-9 12,-10 14,-10 14,-9 14,-9 "
+     id="polyline56" />
+  <text
+     xml:space="preserve"
+     style="font-size:0.47338331px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+     x="4.8669238"
+     y="-5.5405407"
+     id="text2215"><tspan
+       sodipodi:role="line"
+       id="tspan2217"
+       x="4.8669238"
+       y="-5.5405407">1</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:0.47338331px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+     x="8.8804369"
+     y="-5.5399814"
+     id="text2219"><tspan
+       sodipodi:role="line"
+       id="tspan2221"
+       x="8.8804369"
+       y="-5.5399814">2</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:0.47338331px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+     x="12.843414"
+     y="-5.5587749"
+     id="text2223"><tspan
+       sodipodi:role="line"
+       id="tspan2225"
+       x="12.843414"
+       y="-5.5587749">3</tspan></text>
+</svg>

@@ -1,0 +1,21 @@
+\chapter{Introdução}
+A casa inteligente é, sem dúvida, um dos mais estigantes e interessantes projetos de automação inteligente residencial. Ricquebourg \textit{et.al.} definem a casa inteligente, de maneira sistemática, como uma casa equipada com objetos inteligentes interligados por uma rede doméstica, capaz de transmitir informações entre esses objetos e um mecanismo para conectar o ambiente com meios de comunicação externos(internet)\cite{TR:Ricquebourg:06}.
+
+Vigilância, segurança e economia de recursos, como água, energia e gás, são alguns dos serviços básicos que uma casa inteligente pode oferecer. No projeto casa inteligente proposta por \cite{TR:Sandro:05}, o serviço de iluminação adaptativa, que aproveita a iluminação exterior, mostrou uma economia de 40 \% de energia. O conforto e serviços personalizados da casa vão muito além disso. É possível, por exemplo, adaptar a casa para o cuidado de pessoas idosas ou enfermas, sendo configurado serviços como: monitorar torneiras, chuveiros, fogões além de detectar alguns perigos como quedas, etc. 
+
+Imagine que uma pessoa passe por uma cirugia e more distante do recurso hospitalar. Para o acompanhamento do médico na recuperação da cirurgia, os gastos que essa pessoa terá para permanecer no local é consideravelmente alto. O ambiente onde ela reside poderia oferecer o serviço de obter as informações desse paciente e envia-las ao médico. Com excessão a algum problema detectado, o indivíduo não necessitaria sair de casa e teria acompanhamento médico. Isso implicaria no aumento da capacidade de atendimento do hospital, além do aumento de conforto dos pacientes, por exemplo.
+
+Sem dúvidas, há um vasto campo de aplicações da casa inteligente. Porém antes disso, é necessário um método de identificação de seus habitantes, para que esses serviços sejam fornecidos da forma correta. Atualmente existe uma vasta gama de meios de identificação. Tais sistemas podem ser separados em dois grupos: biométricos e não-biométricos. No primeiro, encontram-se aqueles que se baseiam em: crachás, senhas alfanuméricas e confimação de informações pessoais(nome dos pais, datas de nascimento), etc. No segundo, os sitemas biométricos, se baseiam em uma ou mais características únicas presentes em nosso corpo como: Íris, digital, face, ouvido, mão, voz e padrão de assinatura. 
+
+Apesar dos sistemas biométricos citados anteriormente apresentarem uma taxa de acurácia aceitável para aplicações reais, tais métodos são invasivos pois necessitam a atenção do indivíduo no reconhecimento. É interessante que o sistema da casa reconheça o morador de maneira transparente. Olhando essa perspectiva, o reconhecimento através de um ato natural poderia ser usado. Existem algumas pesquisas que tratam a identificação de indivíduos através do padrão de caminhar. Essa solução é bem aceitável em um ambiente doméstico, visto que caminhar é um ato primordial e bem natural do ser humano se locomover em qualquer ambiente.
+
+Explorando essa área, algumas pesquisas surgiram. Algumas apresentam a identificação através de pisos inteligentes. (Comentar trabalhos). Apesar de apresentarem resultados satisfatórios, a implementação dessas soluções alteraria toda a infraestrutura da residência, uma vez que o piso teria que ser total ou quase totalmente substituído. Além disso, ainda não é possível identificar mais de uma pessoa ao mesmo tempo. Devido a essas restrições, a aplicação do sistema de identificação da casa baseado nos passos deve ter outra fonte de informação no qual a infraestrutura da residência não seria tão alterada e que fosse rica suficiente para tratar a identificação de mais de um indivíduo ao mesmo tempo. Alguns trabalhos (citacoes) mostraram que é possível realizar essa identificação através do som das passadas, porém o problema de reconhecer diversos habitantes, tendo somente o áudio como dado de entrada, é uma tarefa difícil e complexa. 
+
+Este trabalho aborda uma maneira de identificar mais de um morador em uma casa utilizando o som.
+
+Idéias:
+
+ - Identificar o que é um passo na onda sonora;
+ - Identificar e utilizar um limiar para obter dados mais dicretos de cada pisada;
+ - Estudar o uso de vários microfones para obteção da distância entre as passadas (idéia dada pelo Ten Madeira);
+ 

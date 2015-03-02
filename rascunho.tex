@@ -1,0 +1,26 @@
+\documentclass[a4paper,10pt, oneside]{book} %This is a special class provided by the KOMA script, which does a lot of adjustments to adapt the standard LaTeX classes to european habits, change to [a4paper,12pt,twoside] for doublesided layout
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+
+\usepackage{graphicx}
+
+\graphicspath{{img/}}
+
+\begin{document}
+
+\tableofcontents
+
+\include{introducao}
+\include{ch_rev_lit}
+\include{ch_conceitos_basicos}
+\include{ch_carac_som}
+\include{ch_metodos_class}
+\include{ch_metodologia}
+\include{ch_resultados}
+\include{ch_conclusoes}
+
+\bibliographystyle{abbrv}
+\bibliography{ref}
+
+\end{document}

@@ -1,0 +1,8 @@
+@echo off
+del *.bak
+del *.aux
+del _temp.*
+del *.log
+del *.pdf
+del *.ps
+del *.dvi
