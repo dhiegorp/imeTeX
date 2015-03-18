@@ -1,7 +1,3 @@
-%% vim: et ts=2 sts=2 sw=2
-%%
-%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para o Instituto Militar de Engenharia
-%%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
 %% of this license or (at your option) any later version.
@@ -12,60 +8,59 @@
 %%
 %% This work has the LPPL maintenance status `maintained'.
 %%
-%% The Current Maintainer of this work is Jan Segre, jansegre@gmail.com
+%% The Current Maintainer of this work is Victor Chaves, vvb.chaves+dev@gmail.com
+%% Discussion about this library can be done at compime16@gmail.com
 %%
+%% Based on ime-abntex2 class by Jan Segre
+%%
+%% Builds on abnTeX2
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
-%%
 
+\ProvidesClass{imetex-base}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ime-abntex2}[2015/03/16 v0.3 Modelo do Instituto Militar de Engenharia baseado em abnTeX2]
-\usepackage[utf8]{inputenc} % Codificacao do documento atual, isto é, dessa classe
-\usepackage{lastpage} % Para total de páginas
-
-% para mais detalhes sobre as opções:
-% http://en.wikibooks.org/wiki/LaTeX/Creating_Packages
-
-% brasao - opção para colocar o brasão no topo da primeira página
-\newif\ifime@brasao\ime@brasaofalse
-\DeclareOption{brasao}{\ime@brasaotrue}
-
-%
-% Repassa todos os parametros a classe abntex2,
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2}}
-
-\ProcessOptions\relax
 \LoadClass{abntex2}
 
-% Muda o cabeçalho (parte que tem o número da página, e originalmente o capítulo atual com uma linha embaixo)
-\makepagestyle{abntheadings}
-%\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{\ABNTEXfontereduzida\textit\leftmark}
-%\makeoddhead{abntheadings}{\ABNTEXfontereduzida\textit\rightmark}{}{\ABNTEXfontereduzida\thepage}
-%\makeheadrule{abntheadings}{\textwidth}{\normalrulethickness}
-\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
-\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+%% Package Dependencies
+	% Basic Packages
+	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
+	\usepackage[alf]{abntex2cite} % Citações padrão ABNT
+	\usepackage{graphicx}         % Inclusão de gráficos
 
-% Aumentar o tamanho da linha de assinatura
-% XXX o tamanho deveria sempre abranger o maior nome, atualmente é fixo em 10cm
-\setlength{\ABNTEXsignwidth}{10cm}
+	% Other Packages
+	\usepackage{cmap}             % Mapear caracteres especiais no PDF
+	\usepackage{lmodern}          % Usa a fonte Latin Modern
+	\usepackage[T1]{fontenc}      % Selecao de codigos de fonte.
+	\usepackage{lastpage}         % Usado pela Ficha catalográfica
+	\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
+	\usepackage{color}            % Controle das cores
+%%
 
+%% Necessary abnTeX2 Specializations
+	% Signature line length
+	\setlength{\ABNTEXsignwidth}{10cm}
 
-% Mudar fonte dos títulos para usar fontes com serif
-% olhar seção 6.1 de http://mirror.math.ku.edu/tex-archive/macros/latex/contrib/abntex2/doc/abntex2.pdf
-%\renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\selectfont}
-\renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+	% Mudar fonte dos títulos para usar fontes com serif
+	\renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+%%
 
-% Capa
-% ====
+%% Main Commands
+	% Make All
+	\newcommand{\makeall}
+	{
+		% override me, please
+	}
 
-\renewcommand{\imprimircapa}{
-  \begin{capa}
-  \center
-  \ifime@brasao
-    \vspace*{-25mm}
-    \includegraphics[height=25mm]{Brasao}\\
-  \else
-    \vspace*{-15mm}
-  \fi
+	% Cover Page (Capa)
+	\newcommand{\makeCover}[1]
+	{
+		\begin{capa}
+			\center
+			%\ifthenelse{}{}{}
+				\vspace*{-25mm}
+				\includegraphics[height=25mm]{Brasao}\\
+			%\else
+				\vspace*{-15mm}
+			%\fi
   {\ABNTEXchapterfont\small
     MINISTÉRIO DA DEFESA\\
     EXÉRCITO BRASILEIRO\\
@@ -76,20 +71,33 @@
 
   \vfill
 
-  {\ABNTEXchapterfont\ABNTEXsectionfontsize\imprimirautor}
+  {\ABNTEXchapterfont\ABNTEXsectionfontsize Autor}
 
   \vfill
 
-  {\ABNTEXchapterfont\ABNTEXchapterfontsize\imprimirtitulo}
+  {\ABNTEXchapterfont\ABNTEXchapterfontsize Título}
 
   \vfill
 
-  {\ABNTEXchapterfont\large\imprimirlocal}\\
-  {\ABNTEXchapterfont\large\imprimirdata}
+  {\ABNTEXchapterfont\large Local}\\
+  {\ABNTEXchapterfont\large Data}
 
   \vspace*{1cm}
-  \end{capa}
-}
+  		\end{capa}
+	}
+	
+	% Title Page (Folha de Rosto)
+	\newcommand{\makeTitle}
+	{
+	
+	}
+	
+	% Catalog Page (Ficha Catalográfica)
+	\newcommand{\makeCatalog}
+	{
+	
+	}
+%%
 
 
 % Folha de rosto
@@ -275,5 +283,3 @@
 
   \end{folhadeaprovacao}
 }
-
-% TODO corrigir modelo de referencias
