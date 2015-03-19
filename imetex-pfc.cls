@@ -20,6 +20,8 @@
 	% Make All
 	\renewcommand{\makeall}
 	{
+		\makeCover
 		\makeTitle
+		\makeCatalog
 	}
 %%
