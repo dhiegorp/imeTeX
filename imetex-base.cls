@@ -54,6 +54,9 @@
 		\renewcommand{\coadvisorInstitution}{#3}
 	}
 	
+	% (Banca Examinadora)
+	% TODO	
+	
 	% Preamble (Preâmbulo)
 	\providecommand{\thepreamble}{}
 	\newcommand{\preamble}[1]{\renewcommand{\thepreamble}{#1}	}
@@ -137,20 +140,26 @@
 		\let\footnotesize\small
 		\let\footnoterule\relax
 		\let\footnote\thanks
-		\noindent
 		\normalsize
-		c\thedate
 		
-		INSTITUTO MILITAR DE ENGENHARIA\\
-		Praça General Tibúrcio, 80 - Praia Vermelha\\
-		Rio de Janeiro-RJ CEP 22290-270
+		{
+			\noindent
+			c\thedate\\
+		}
+		
+		\vspace{5mm}
+		{
+			\noindent
+			INSTITUTO MILITAR DE ENGENHARIA\\
+			Praça General Tibúrcio, 80 - Praia Vermelha\\
+			Rio de Janeiro-RJ CEP 22290-270
+		}
 		
  		\vspace{10mm}
 		Este exemplar é de propriedade do Instituto Militar de Engenharia, que poderá incluí-lo em base de dados,
 		armazenar em computador, microfilmar ou adotar qualquer forma de arquivamento.
 
 		\vspace{10mm}
-		\indent
 		É permitida a menção, reprodução parcial ou integral e a transmissão entre bibliotecas deste trabalho, sem
 		modificação de seu texto, em qualquer meio que esteja ou venha a ser fixado, para pesquisa acadêmica,
 		comentários e citações, desde que sem finalidade comercial e que seja feita a referência bibliográfica
@@ -170,7 +179,7 @@
 				\parbox[t]{2cm}{\hspace{4mm} }
 				\parbox[t]{9.5cm}{\noindent }\\
 				\parbox[t]{2cm}{\hspace{4mm} }
-				\parbox[t]{9.5cm}{\noindent \hspace{4mm}  /{\let\\=, \imprimirautor}; orientados por \imprimirorientador\ - Rio de Janeiro: Instituto Militar de Engenharia, \the\year{}.}\\
+				\parbox[t]{9.5cm}{\noindent \hspace{4mm}  /{\let\\=, \theauthor}; orientados por \imprimirorientador\ - Rio de Janeiro: Instituto Militar de Engenharia, \thedate.}\\
 				\parbox[t]{2cm}{\ }
 				\parbox[t]{9.5cm}{\noindent \hspace{4mm}}\\
 				[\baselineskip]
@@ -178,7 +187,7 @@
 				\parbox[t]{9.5cm}{\noindent \hspace{4mm} \pageref{LastPage}p. : il.} \\
 				[\baselineskip]
 				\parbox[t]{2cm}{\ }
-				\parbox[t]{9.5cm}{\noindent \hspace{4mm}  - Instituto Militar de Engenharia \vspace{1mm} - Rio de Janeiro, \the\year{}. } \\
+				\parbox[t]{9.5cm}{\noindent \hspace{4mm}  - Instituto Militar de Engenharia \vspace{1mm} - Rio de Janeiro, \thedate. } \\
 				[\baselineskip]
 				\parbox[t]{2cm}{\ }
 				\parbox[t]{9.5cm}{\noindent \hspace{4mm} }\\
