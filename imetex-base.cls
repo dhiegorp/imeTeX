@@ -68,41 +68,45 @@
 
 %% Main Commands
 	% Make All
-	\newcommand{\makeall}
+	\newcommand{\printFrontMatter}
 	{
 		% override me, please
 	}
 
 	% Cover Page (Capa)
-	\newcommand{\makeCover}
+	\newcommand{\printCover}
 	{
-		\begin{titlingpage}
-			\center
-			\ABNTEXchapterfont
-			\small
-			MINISTÉRIO DA DEFESA\\
-			EXÉRCITO BRASILEIRO\\
-			DEPARTAMENTO DE CIÊNCIA E TECNOLOGIA\\
-			INSTITUTO MILITAR DE ENGENHARIA\\
-			(Real Academia de Artilharia, Fortificação e Desenho/1792)\\
-			CURSO DE GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO\\
-			\vspace*{5cm}
-			\ABNTEXsectionfontsize
-			\theauthor\\
-			\vspace*{5cm}
-			\ABNTEXchapterfontsize
-			\thetitle\\
-			\vfill
-			\large
-			Rio de Janeiro\\
-			\thedate\\
-			\vspace*{1cm}
-		\end{titlingpage}
+		\centering
+		\ABNTEXchapterfont
+		\small
+		
+		MINISTÉRIO DA DEFESA\\
+		EXÉRCITO BRASILEIRO\\
+		DEPARTAMENTO DE CIÊNCIA E TECNOLOGIA\\
+		INSTITUTO MILITAR DE ENGENHARIA\\
+		(Real Academia de Artilharia, Fortificação e Desenho/1792)\\
+		CURSO DE GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO\\
+		
+		\vspace*{5cm}
+		
+		\ABNTEXsectionfontsize
+		\theauthor\\
+		
+		\vspace*{5cm}
+		
+		\ABNTEXchapterfontsize
+		\thetitle\\
+		
+		\vfill
+		\large
+		Rio de Janeiro\\
+		\thedate\\
+		
 		\clearpage
 	}
 	
 	% Title Page (Folha de Rosto)
-	\newcommand{\makeTitle}
+	\newcommand{\printTitle}
 	{
 		\begin{center}
 			\ABNTEXchapterfont
@@ -119,27 +123,25 @@
 		\begin{minipage}{.5\textwidth}
 			\SingleSpacing
 			\par \thepreamble
-			\par \IfNoText{\advisorName}{Orientador: \advisorName\ - \advisorTitle}
-			\par \IfNoText{\coadvisorName}{Co-orientador: \coadvisorName\ - \coadvisorTitle}
+			\par \ifNoText{\advisorName}{Orientador: \advisorName\ - \advisorTitle}
+			\par \ifNoText{\coadvisorName}{Co-orientador: \coadvisorName\ - \coadvisorTitle}
 		\end{minipage}
 
 		\vspace*{\fill}
 		
 		\begin{center}
-		\large
-		Rio de Janeiro\\
-		\thedate\\
+			\large
+			Rio de Janeiro\\
+			\thedate\\
 		\end{center}
+		
 		\clearpage
 	}
 	
 	% Catalog Page (Ficha Catalográfica)
-	\newcommand{\makeCatalog}
+	\newcommand{\printCatalog}
 	{
-		\begin{fichacatalografica}
-		\let\footnotesize\small
-		\let\footnoterule\relax
-		\let\footnote\thanks
+		\thispagestyle{empty}
 		\normalsize
 		
 		{
@@ -194,14 +196,12 @@
 			\end{minipage}
 		}
 
-		\end{fichacatalografica}
 		\clearpage
 	}
 %%
 
 %% Useful Commands
-\makeatletter
-	\newcommand{\IfNoText}[2]
+	\newcommand{\ifNoText}[2]
 	{
 		\sbox0{#1}
 		\ifdim\wd0=0pt
@@ -209,5 +209,4 @@
 			{#2}
 		\fi
 	}
-\makeatother
 %%
