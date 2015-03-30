@@ -33,6 +33,8 @@
 	\usepackage{lastpage}         % Usado pela Ficha catalográfica
 	\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
 	\usepackage{color}            % Controle das cores
+	\usepackage{media9}				% LaTeX Media Package
+	\usepackage{hyperref}			% Hyperlinks and URLs
 %%
 
 %% Useful Fields
@@ -70,7 +72,9 @@
 	% Make All
 	\newcommand{\printFrontMatter}
 	{
+		\frontmatter
 		% override me, please
+		\mainmatter
 	}
 
 	% Cover Page (Capa)
@@ -198,6 +202,14 @@
 
 		\clearpage
 	}
+	
+	%% Bibliography (Bibliografia)
+	\newcommand{\printBackMatter}
+	{
+		\backmatter
+		\pagestyle{plain}
+		%\bibliography{bibliography}
+	}
 %%
 
 %% Useful Commands
@@ -208,5 +220,23 @@
 		\else
 			{#2}
 		\fi
+	}
+	
+	\newcommand{\youtube}[1]{
+	\begin{figure}[h]
+		\centering
+		\includemedia[
+			width=0.6\linewidth,height=0.45\linewidth,
+			activate=pageopen,
+			flashvars = {
+				modestbranding=1		% no YT logo in control bar
+				&autohide=1			% controlbar autohide
+				&showinfo=0			% no title and other info before start
+  			}
+		]
+		{}
+		{http://www.youtube.com/v/#1?rel=0}   % Flash file
+		\caption{\url{http://www.youtube.com/v/#1?rel=0}}
+	\end{figure}
 	}
 %%

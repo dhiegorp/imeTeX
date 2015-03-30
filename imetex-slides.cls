@@ -12,16 +12,16 @@
 %%
 %% Builds on imetex-base
 
-\ProvidesClass{imetex-trab}
+\ProvidesClass{imetex-pfc}
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{imetex-base}
 
 %% imeTeX-base Overrides
 	% Make All
-	\renewcommand{\printFrontMatter}
+	\renewcommand{\makeall}
 	{
-		\frontmatter
-		\printCover
-		\mainmatter
+		\makeCover
+		\makeTitle
+		\makeCatalog
 	}
 %%
