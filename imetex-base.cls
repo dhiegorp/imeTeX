@@ -38,6 +38,15 @@
 %%
 
 %% Useful Fields
+	% Authors (Autores)
+	\newcommand{\authorName}{
+		\theauthor
+	}
+	\providecommand{\coauthorName}{}
+	\newcommand{\coauthor}[1]{
+		\renewcommand{\coauthorName}{#1}
+	}
+	
 	% Advisors (Orientadores)
 	\providecommand{\advisorName}{}
 	\providecommand{\advisorTitle}{}
@@ -79,7 +88,7 @@
 
 	% Cover Page (Capa)
 	\newcommand{\printCover}
-	{
+	{{
 		\centering
 		\ABNTEXchapterfont
 		\small
@@ -107,7 +116,7 @@
 		\thedate\\
 		
 		\clearpage
-	}
+	}}
 	
 	% Title Page (Folha de Rosto)
 	\newcommand{\printTitle}
