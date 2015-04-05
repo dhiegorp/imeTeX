@@ -20,6 +20,32 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{abntex2}
 
+%% Class Options
+	% Default: class notes (notas de aula)
+	
+	% Homework Assignments and Reports (Trabalhos e Relatórios)
+	\DeclareOption{trab}{
+		\renewcommand{\printFrontMatter}
+		{
+			\frontmatter
+			\printCover
+			\mainmatter
+		}
+	}
+	
+	% Final Thesis (Projeto de Fim de Curso)
+	\DeclareOption{pfc}{
+		\renewcommand{\printFrontMatter}
+		{
+			\frontmatter
+			\printTitle
+			\printCover
+			\printCatalog
+			\mainmatter
+		}	
+	}
+%%
+
 %% Package Dependencies
 	% Basic Packages
 	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
