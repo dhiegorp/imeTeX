@@ -16,12 +16,24 @@
 %% Builds on abnTeX2
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
 
-\ProvidesClass{imetex-base}[2015/03/19 v0.2 imeTeX]
+\ProvidesClass{imetex}[2015/03/19 v0.2 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{abntex2}
 
+%% Class Variables
+	\providecommand{\printFrontMatter}{}
+%%
+
 %% Class Options
 	% Default: class notes (notas de aula)
+	\DeclareOption{notas}{
+		\renewcommand{\printFrontMatter}
+		{
+			\frontmatter
+			\printCover
+			\mainmatter
+		}
+	}
 	
 	% Homework Assignments and Reports (Trabalhos e Relatórios)
 	\DeclareOption{trab}{
@@ -44,6 +56,9 @@
 			\mainmatter
 		}	
 	}
+	
+	\ExecuteOptions{notas}
+	\ProcessOptions
 %%
 
 %% Package Dependencies
@@ -104,14 +119,6 @@
 %%
 
 %% Main Commands
-	% Make All
-	\newcommand{\printFrontMatter}
-	{
-		\frontmatter
-		% override me, please
-		\mainmatter
-	}
-
 	% Cover Page (Capa)
 	\newcommand{\printCover}
 	{{
