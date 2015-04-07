@@ -25,7 +25,7 @@
 %%
 
 %% Class Options
-	% Default: class notes (notas de aula)
+	% Class Notes (notas de aula) : default option
 	\DeclareOption{notas}{
 		\renewcommand{\printFrontMatter}
 		{
@@ -37,6 +37,26 @@
 	
 	% Homework Assignments and Reports (Trabalhos e Relatórios)
 	\DeclareOption{trab}{
+		\renewcommand{\printFrontMatter}
+		{
+			\frontmatter
+			\printCover
+			\mainmatter
+		}
+	}
+
+	% Scientific Publication (Iniciação Científica)
+		\DeclareOption{inci}{
+		\renewcommand{\printFrontMatter}
+		{
+			\frontmatter
+			\printCover
+			\mainmatter
+		}
+	}
+	
+	% Internal Workshops (Tema Dirigido, Iniciação à Pesquisa)
+		\DeclareOption{inci}{
 		\renewcommand{\printFrontMatter}
 		{
 			\frontmatter
