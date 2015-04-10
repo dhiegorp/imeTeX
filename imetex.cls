@@ -16,9 +16,26 @@
 %% Builds on abnTeX2
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
 
-\ProvidesClass{imetex}[2015/03/19 v0.2 imeTeX]
+\ProvidesClass{imetex}[2015/04/10 v0.3 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{abntex2}
+
+%% Package Dependencies
+	% Basic Packages
+	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
+	\usepackage[alf]{abntex2cite} % Citações padrão ABNT
+	\usepackage{graphicx}         % Inclusão de gráficos
+
+	% Other Packages
+	\usepackage{cmap}             % Mapear caracteres especiais no PDF
+	\usepackage{lmodern}          % Usa a fonte Latin Modern
+	\usepackage[T1]{fontenc}      % Selecao de codigos de fonte.
+	\usepackage{lastpage}         % Usado pela Ficha catalográfica
+	\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
+	\usepackage{color}            % Controle das cores
+	\usepackage{media9}				% LaTeX Media Package
+	\usepackage{hyperref}			% Hyperlinks and URLs
+%%
 
 %% Class Variables
 	\providecommand{\printFrontMatter}{}
@@ -79,23 +96,6 @@
 	
 	\ExecuteOptions{notas}
 	\ProcessOptions
-%%
-
-%% Package Dependencies
-	% Basic Packages
-	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
-	\usepackage[alf]{abntex2cite} % Citações padrão ABNT
-	\usepackage{graphicx}         % Inclusão de gráficos
-
-	% Other Packages
-	\usepackage{cmap}             % Mapear caracteres especiais no PDF
-	\usepackage{lmodern}          % Usa a fonte Latin Modern
-	\usepackage[T1]{fontenc}      % Selecao de codigos de fonte.
-	\usepackage{lastpage}         % Usado pela Ficha catalográfica
-	\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
-	\usepackage{color}            % Controle das cores
-	\usepackage{media9}				% LaTeX Media Package
-	\usepackage{hyperref}			% Hyperlinks and URLs
 %%
 
 %% Useful Fields

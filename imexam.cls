@@ -12,17 +12,19 @@
 %%
 %% Builds on `exam` class by Philip S. Hirschhorn (http://www-math.mit.edu/~psh/#ExamCls)
 
-\ProvidesClass{imexam}
+\ProvidesClass{imexam}[2015/04/10 v0.3 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[addpoints]{exam}
 
-%% Packages
+%% Packages Dependencies
 	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
-	\usepackage{enumitem}
 %%
 
 %% Main
 	\newcommand{\printCover}{
+		\begin{coverpages}
+			Capa
+		\end{coverpages}
 	}
 	
 	\newcommand{\printFrontMatter}{
@@ -32,24 +34,27 @@
 	
 	\newcommand{\printBackMatter}{
 		\end{questions}
-		\clearpage
+		\vfill
 		\centering
 		\combinedgradetable
 	}
 %%
 
 %% `exam.cls` Personalization
+	% First Page Header
 	\pagestyle{headandfoot}
-	\firstpageheader{}{Cabeçalho}{}
-	\firstpagefooter{}{}{}
-	\runningheader{}{}{}
-	\runningfooter{}{}{}
+	\firstpageheader{}{
+		\fbox{Cabeçalho}
+	}{}
+	
+	% Page Counter Footer
+	\cfoot{\iflastpage{}{Página \thepage\ de \numpages}}
 	
 	% Brackets around question points
 	\bracketedpoints
 	
 	% Adds up the question value
-	\qformat{\textbf{Questão \thequestion}\quad (\totalpoints)\hfill}
+	\qformat{\textbf{Questão \thequestion}\quad [\totalpoints~pontos]\hfill}
 	
 	% 'points' in portuguese
 	\pointpoints{ponto}{pontos}
