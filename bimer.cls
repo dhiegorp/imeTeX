@@ -26,35 +26,95 @@
 %%
 
 %% Variables
-	\newcommand{\institutedepartment}{}
+	\newcommand{\bimer@institutedepartment}{}
+	\newcommand{\bimer@institutecontext}{}
+	\newcommand{\context}[1]{\renewcommand{\bimer@institutecontext}{#1}}
+	\newcommand{\bimer@shortinstitute}{instituto militar de engenharia}
 %%
 
 %% Class Options
-	\DeclareOptionBeamer{comp}{\renewcommand{\institutedepartment}{Engenharia de Computação}}
+	\DeclareOptionBeamer{comp}{\renewcommand{\bimer@institutedepartment}{engenharia de computação}}
+	\DeclareOptionBeamer{elo}{\renewcommand{\bimer@institutedepartment}{engenharia eletrônica}}
+	\DeclareOptionBeamer{ele}{\renewcommand{\bimer@institutedepartment}{engenharia elétrica}}
+	\DeclareOptionBeamer{tele}{\renewcommand{\bimer@institutedepartment}{engenharia de telecomunicações}}
+	\DeclareOptionBeamer{mat}{\renewcommand{\bimer@institutedepartment}{engenharia de materiais}}
+	\DeclareOptionBeamer{qui}{\renewcommand{\bimer@institutedepartment}{engenharia química}}
+	\DeclareOptionBeamer{fc}{\renewcommand{\bimer@institutedepartment}{engenharia de fortificação e construção}}
+	\DeclareOptionBeamer{mec}{\renewcommand{\bimer@institutedepartment}{engenharia mecânica}}
 	
 	\ProcessOptionsBeamer
 %%
 
 \mode<presentation>
 
-%% Inner Theme
-	\setbeamertemplate{title page}
-	{
-	}
-	
-	\newcommand{\formatheader}[1]
-	{%
+%% Header
+	% Set header text font, size, color and uppercase it.
+	\newcommand{\formatheader}[1]{{%
 		\color{white}%
 		\fontencoding{T1}\fontfamily{ugm}\fontshape{n}\fontseries{bx}\fontsize{5.4}{5.4pt}\selectfont%
-		\expandafter\uppercase\expandafter{#1}%
-	}
+		\uppercase\expandafter{#1}%
+		%\rmfamily\scshape\mdseries\fontsize{7.2}{7.2pt}\selectfont{#1}
+	}}
 	
-	\setbeamertemplate{headline}
-	{
-		\nointerlineskip%
-		{\color{gray}\vrule height.028\paperwidth width\paperwidth}%
-		\rlap{\raisebox{.0088\paperwidth}[0pt][0pt]{\hskip-.976\paperwidth\formatheader{\institutedepartment}}}%
-		\llap{\raisebox{.0088\paperwidth}[0pt][0pt]{\formatheader{\beamer@shortinstitute}\hspace*{0.024\paperwidth}}}
+	% Isolated header template
+	\newcommand{\printHeader}{{%
+		{\color[gray]{0.4}\vrule height.028\paperwidth width\paperwidth}%
+		\rlap{\raisebox{.0088\paperwidth}[0pt][0pt]{\hskip-.976\paperwidth\formatheader{\bimer@institutedepartment}}}%
+		\llap{\raisebox{.0088\paperwidth}[0pt][0pt]{\formatheader{\bimer@shortinstitute}\hspace*{0.024\paperwidth}}}%
+	}}
+	
+	% Activate Everywhere
+	\setbeamertemplate{headline}{{\printHeader}}
+
+%% Title Page (Dangerous Zone)
+	\setbeamertemplate{title page}
+	{%
+		\global\beamer@frametopskip=0pt plus 1fill\relax
+		% Upper Left Figure (IME)
+		\raisebox{-0.083\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin%
+          \pgfdeclareimage[height=.078\paperwidth]{IMEfront}{IMEfront}%
+          \pgfuseimage{IMEfront}}%
+		}%
+        % Manualy insert header
+        \raisebox{-.028\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin\printHeader}}%
+        % Lower Right Figure
+        \raisebox{-\paperheight}[0pt][0pt]{%
+        	\hskip-\Gm@lmargin
+			\rlap{\hskip\paperwidth
+				\pgfdeclareimage[width=.375\paperwidth]{QEMsymbol}{QEMsymbol}%
+				\llap{\pgfuseimage{QEMsymbol}}%
+			}%
+        }%
+        % Presentation context (User Defined)
+        {\vskip.09\paperwidth\usebeamercolor[fg]{titlepage head}%
+        	\sffamily\fontsize{8}{8pt}\upshape\mdseries
+        	\bimer@institutecontext\par%
+        }%
+        % Context Line and Logo
+		{\setlength{\beamer@rightsidebar}{.1138\paperwidth}\vskip-.075\paperwidth\hskip-\Gm@lmargin\rlap{%
+			\begin{pgfpicture}{0pt}{-.0005\paperwidth}{\paperwidth}{.0005\paperwidth}%
+			\begingroup
+			{\color{black}%
+				\pgfpathrectangle{\pgfpoint{0pt}{-.0005\paperwidth}}{\pgfpoint{\paperwidth}{.0005\paperwidth}}\pgfusepathqfill%
+			}%
+			\endgroup
+			\end{pgfpicture}%
+			\hskip-.5\beamer@rightsidebar\hskip-.0325\paperwidth
+        	\raisebox{-.0055\paperwidth}{%
+        		\pgfdeclareimage[height=.09\paperwidth]{IMEsymbol}{IMEsymbol}%
+        		\pgfuseimage{IMEsymbol}%
+        	}%
+        }}%
+		\vskip0pt plus 1filll%
+        %% Presentation Info
+        \parbox{\textwidth}{
+			{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
+			{\usebeamerfont{subtitle}\vskip.1\baselineskip\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+			{\usebeamerfont{author}\vskip\baselineskip\usebeamercolor[fg]{author}\insertauthor\par}%
+			{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
+			{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+        }
+        \vskip0pt plus 2filll
 	}
 %%
 
