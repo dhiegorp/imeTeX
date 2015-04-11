@@ -26,10 +26,14 @@
 %%
 
 %% Variables
-	\newcommand{\bimer@institutedepartment}{}
 	\newcommand{\bimer@institutecontext}{}
 	\newcommand{\context}[1]{\renewcommand{\bimer@institutecontext}{#1}}
+	
+	% Institute Specification
 	\newcommand{\bimer@shortinstitute}{instituto militar de engenharia}
+	\newcommand{\bimer@institutedepartment}{seção de ensino básico}
+	\newcommand{\bimer@institutequarterlogo}{QEMquarter}
+	
 %%
 
 %% Class Options
@@ -44,6 +48,16 @@
 	
 	\ProcessOptionsBeamer
 %%
+
+%% Main
+	\newcommand{\printFrontMatter}{
+		\frame[plain] \titlepage
+	}
+	
+	\newcommand{\printBackMatter}{
+		% nada necessário
+	}
+
 
 \mode<presentation>
 
@@ -71,7 +85,7 @@
 	{%
 		\global\beamer@frametopskip=0pt plus 1fill\relax
 		% Upper Left Figure (IME)
-		\raisebox{-0.083\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin%
+		\raisebox{-0.11\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin%
           \pgfdeclareimage[height=.078\paperwidth]{IMEfront}{IMEfront}%
           \pgfuseimage{IMEfront}}%
 		}%
@@ -81,8 +95,8 @@
         \raisebox{-\paperheight}[0pt][0pt]{%
         	\hskip-\Gm@lmargin
 			\rlap{\hskip\paperwidth
-				\pgfdeclareimage[width=.375\paperwidth]{QEMsymbol}{QEMsymbol}%
-				\llap{\pgfuseimage{QEMsymbol}}%
+				\pgfdeclareimage[width=.375\paperwidth]{quarter}{\bimer@institutequarterlogo}%
+				\llap{\pgfuseimage{quarter}}%
 			}%
         }%
         % Presentation context (User Defined)
