@@ -16,39 +16,52 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[addpoints]{exam}
 
-%% Packages Dependencies
+%% Necessary Packages
 	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
 %%
 
 %% Main
-	\newcommand{\printCover}{
+	\newcommand{\printCover}{{
 		\begin{coverpages}
 			Capa
 		\end{coverpages}
-	}
+	}}
+	
+	\newcommand{\printFirstPageHeader}{{
+		\noindent
+		\fbox{
+			\begin{minipage}[c][4cm][t]{\textwidth}
+				Cabeçalho
+			\end{minipage}
+		}
+		\vspace{0.5cm}
+	}}
 	
 	\newcommand{\printFrontMatter}{
 		\printCover
+		\printFirstPageHeader
 		\begin{questions}
+	}
+	
+	\newcommand{\printGradeTable}{
+		\begin{center}
+			\combinedgradetable		
+		\end{center}
 	}
 	
 	\newcommand{\printBackMatter}{
 		\end{questions}
 		\vfill
-		\centering
-		\combinedgradetable
+		\printGradeTable
 	}
 %%
 
 %% `exam.cls` Personalization
 	% First Page Header
-	\pagestyle{headandfoot}
-	\firstpageheader{}{
-		\fbox{Cabeçalho}
-	}{}
+	\pagestyle{foot}
 	
 	% Page Counter Footer
-	\cfoot{\iflastpage{}{Página \thepage\ de \numpages}}
+	\cfoot{Página \thepage\ de \numpages}
 	
 	% Brackets around question points
 	\bracketedpoints
