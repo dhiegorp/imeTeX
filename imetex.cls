@@ -27,6 +27,7 @@
 	\usepackage{graphicx}         % Inclusão de gráficos
 
 	% Other Packages
+	\usepackage{amsthm}				% Proof Environment
 	\usepackage{cmap}             % Mapear caracteres especiais no PDF
 	\usepackage{lmodern}          % Usa a fonte Latin Modern
 	\usepackage[T1]{fontenc}      % Selecao de codigos de fonte.
@@ -37,7 +38,7 @@
 	\usepackage{hyperref}			% Hyperlinks and URLs
 %%
 
-%% Class Variables
+%% Variable Commands
 	\providecommand{\printFrontMatter}{}
 %%
 
@@ -90,38 +91,38 @@
 
 %% Useful Fields
 	% Authors (Autores)
-	\newcommand{\authorName}{
+	\newcommand{\imetex@authorName}{
 		\theauthor
 	}
-	\providecommand{\coauthorName}{}
+	\providecommand{\imetex@coauthorName}{}
 	\newcommand{\coauthor}[1]{
-		\renewcommand{\coauthorName}{#1}
+		\renewcommand{\imetex@coauthorName}{#1}
 	}
 	
 	% Advisors (Orientadores)
-	\providecommand{\advisorName}{}
-	\providecommand{\advisorTitle}{}
-	\providecommand{\advisorInstitution}{}
+	\providecommand{\imetex@advisorName}{}
+	\providecommand{\imetex@advisorTitle}{}
+	\providecommand{\imetex@advisorInstitution}{}
 	\newcommand{\advisor}[3]{
-		\renewcommand{\advisorName}{#1}
-		\renewcommand{\advisorTitle}{#2}
-		\renewcommand{\advisorInstitution}{#3}
+		\renewcommand{\imetex@advisorName}{#1}
+		\renewcommand{\imetex@advisorTitle}{#2}
+		\renewcommand{\imetex@advisorInstitution}{#3}
 	}
-	\providecommand{\coadvisorName}{}
-	\providecommand{\coadvisorTitle}{}
-	\providecommand{\coadvisorInstitution}{}
+	\providecommand{\imetex@coadvisorName}{}
+	\providecommand{\imetex@coadvisorTitle}{}
+	\providecommand{\imetex@coadvisorInstitution}{}
 	\newcommand{\coadvisor}[3]{
-		\renewcommand{\coadvisorName}{#1}
-		\renewcommand{\coadvisorTitle}{#2}
-		\renewcommand{\coadvisorInstitution}{#3}
+		\renewcommand{\imetex@coadvisorName}{#1}
+		\renewcommand{\imetex@coadvisorTitle}{#2}
+		\renewcommand{\imetex@coadvisorInstitution}{#3}
 	}
 	
 	% (Banca Examinadora)
-	% TODO	
+	% TODO
 	
 	% Preamble (Preâmbulo)
-	\providecommand{\thepreamble}{}
-	\newcommand{\preamble}[1]{\renewcommand{\thepreamble}{#1}	}
+	\providecommand{\imetex@preamble}{}
+	\newcommand{\preamble}[1]{\renewcommand{\imetex@preamble}{#1}	}
 %%
 
 %% Necessary abnTeX2 Specializations
@@ -179,8 +180,8 @@
 		\begin{minipage}{.5\textwidth}
 			\SingleSpacing
 			\par \thepreamble
-			\par \ifNoText{\advisorName}{Orientador: \advisorName\ - \advisorTitle}
-			\par \ifNoText{\coadvisorName}{Co-orientador: \coadvisorName\ - \coadvisorTitle}
+			\par \ifNoText{\imetex@advisorName}{Orientador: \imetex@advisorName\ - \imetex@advisorTitle}
+			\par \ifNoText{\imetex@coadvisorName}{Co-orientador: \imetex@coadvisorName\ - \imetex@coadvisorTitle}
 		\end{minipage}
 
 		\vspace*{\fill}
@@ -262,6 +263,15 @@
 		\pagestyle{plain}
 		%\bibliography{bibliography}
 	}
+%%
+
+%% Academic Utilities
+	\newtheorem{definition}{Definiçao}[chapter]
+	\newtheorem{example}{Exemplo}[chapter]
+	
+	\newtheorem{theorem}{Teorema}[chapter]
+	\newtheorem{lemma}[theorem]{Lema}
+	\newtheorem{corollary}{Corolario}[theorem]
 %%
 
 %% Useful Commands
