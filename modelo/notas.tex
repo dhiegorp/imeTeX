@@ -1,21 +1,32 @@
-\documentclass{imetex-notas}
+\documentclass{tufte-handout}
+\usepackage[utf8]{inputenc}		% Caracteres especiais
+\usepackage{amsthm}				% Proof Environment
+%\usepackage{amsfonts}			% Math Fonts
+%\usepackage{cmap}             % Mapear caracteres especiais no PDF
 
-%% Informações de Capa etc.
-\author{UM DOIS TRÊS DE OLIVEIRA QUATRO}
-\title{SOBRE A BREVIDADE DA TORA}
-\date{\today}
+\newtheorem{definition}{Definição}
+\newtheorem{example}{Exemplo}
+\newtheorem*{remark}{Observação}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}{Corolário}[theorem]
 
-% Comando que prepara o índice
+\author{Nome do Autor}
+\title{Nome da Disciplina}
+\date{Abril 2015}
+
 \makeindex
 
-\begin{document} 
-\printFrontMatter
+\begin{document}
+\maketitle
+\begin{abstract}
+Aqui entra o resumo.
+\end{abstract}
 
-\chapter{Introdução}
+\section{Introdução}
+\subsection{Mais Introdução}
+\section{Desenvolvimento}
 
-\chapter{Desenvolvimento}
+\section{Conclusão}
 
-\chapter{Conclusão}
-
-\printBackMatter
 \end{document}

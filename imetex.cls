@@ -28,6 +28,7 @@
 
 	% Other Packages
 	\usepackage{amsthm}				% Proof Environment
+	\usepackage{amsfonts}			% Math Fonts
 	\usepackage{cmap}             % Mapear caracteres especiais no PDF
 	\usepackage{lmodern}          % Usa a fonte Latin Modern
 	\usepackage[T1]{fontenc}      % Selecao de codigos de fonte.
@@ -266,12 +267,13 @@
 %%
 
 %% Academic Utilities
-	\newtheorem{definition}{Definiçao}[chapter]
+	\newtheorem{definition}{Definição}[chapter]
 	\newtheorem{example}{Exemplo}[chapter]
+	\newtheorem*{remark}{Observação}
 	
 	\newtheorem{theorem}{Teorema}[chapter]
 	\newtheorem{lemma}[theorem]{Lema}
-	\newtheorem{corollary}{Corolario}[theorem]
+	\newtheorem{corollary}{Corolário}[theorem]
 %%
 
 %% Useful Commands
