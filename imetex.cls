@@ -22,6 +22,7 @@
 
 %% Packages
 	% Basic Packages
+	\usepackage{ime-style}
 	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
 	\usepackage[alf]{abntex2cite} % Citações padrão ABNT
 	\usepackage{graphicx}         % Inclusão de gráficos
@@ -35,7 +36,6 @@
 	\usepackage{lastpage}         % Usado pela Ficha catalográfica
 	\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
 	\usepackage{color}            % Controle das cores
-	\usepackage{media9}				% LaTeX Media Package
 	\usepackage{hyperref}			% Hyperlinks and URLs
 %%
 
@@ -263,43 +263,5 @@
 		\backmatter
 		\pagestyle{plain}
 		%\bibliography{bibliography}
-	}
-%%
-
-%% Academic Utilities
-	\newtheorem{definition}{Definição}[chapter]
-	\newtheorem{example}{Exemplo}[chapter]
-	\newtheorem*{remark}{Observação}
-	
-	\newtheorem{theorem}{Teorema}[chapter]
-	\newtheorem{lemma}[theorem]{Lema}
-	\newtheorem{corollary}{Corolário}[theorem]
-%%
-
-%% Useful Commands
-	\newcommand{\ifNoText}[2]
-	{
-		\sbox0{#1}
-		\ifdim\wd0=0pt
-		\else
-			{#2}
-		\fi
-	}
-	
-	\newcommand{\youtube}[1]{
-		\begin{figure}[h]
-			\centering
-			\includemedia[
-				width=0.6\linewidth,height=0.45\linewidth,
-				activate=pageopen,
-				flashvars = {
-					modestbranding=1		% no YT logo in control bar
-					&autohide=1			% controlbar autohide
-					&showinfo=0			% no title and other info before start
-  				}
-  			]
-			{}{http://www.youtube.com/v/#1?rel=0}   % Flash file
-			\caption{\url{http://www.youtube.com/v/#1?rel=0}}
-	\end{figure}
 	}
 %%
