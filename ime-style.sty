@@ -3,9 +3,12 @@
 \usepackage{amsthm}				% Proof Environment
 \usepackage{amsmath}			% Declaração de Operadores
 \usepackage{media9}				% LaTeX Media Package
-%\usepackage{amsfonts}			% Math Fonts
-%\usepackage{cmap}             % Mapear caracteres especiais no PDF
-\renewcommand{\thesection}{}
+\usepackage{amsfonts}			% Math Fonts
+\usepackage{cmap}             % Mapear caracteres especiais no PDF
+
+
+
+\bibliographystyle{plain}
 
 %% Theorems and Environments
 	\newtheorem{definition}{Definição}[section]
@@ -22,7 +25,7 @@
 %%
 
 %% Useful Commands
-	\newcommand{\ifNoText}[2]
+	\newcommand{\ifNotEmpty}[2]
 	{
 		\sbox0{#1}
 		\ifdim\wd0=0pt

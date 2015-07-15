@@ -8,7 +8,7 @@
 %%
 %% This work has the LPPL maintenance status `maintained'.
 %%
-%% The Current Maintainer of this work is Victor Chaves, vvb.chaves+dev@gmail.com
+%% The Current Maintainer of this work is Victor Chaves, vvb.chaves@gmail.com
 %% Discussion about this library can be done at compime16@gmail.com
 %%
 %% Based on ime-abntex2 class by Jan Segre
@@ -19,6 +19,7 @@
 \ProvidesClass{imetex}[2015/04/10 v0.3 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{abntex2}
+\makeindex
 
 %% Packages
 	% Basic Packages
@@ -39,61 +40,85 @@
 	\usepackage{hyperref}			% Hyperlinks and URLs
 %%
 
-%% Variable Commands
-	\providecommand{\printFrontMatter}{}
+%% Class Variables
+	% Conditionals
+	\newif\ifcoverRequired
+	\newif\iftitleRequired
+	\newif\ifcatalogRequired
+	\newif\ifapprovalRequired
+	\newif\ifdedicationProvided
+	\newif\ifthanksProvided
+	\newif\ifepigraphProvided
+	\newif\iftableOfContentsRequired
+	\newif\iftableOfFiguresRequired
+	\newif\iftableOfTablesRequired
+	\newif\iftableOfAbbreviationsRequired
+	\newif\iftableOfSymbolsRequired
+	\newif\ifabstractRequired
+	\newif\iftranslatedAbstractRequired
 %%
 
 %% Class Options
 	% Class Notes (notas de aula) : default option
 	\DeclareOption{notas}{
-		\renewcommand{\printFrontMatter}
-		{
-			\frontmatter
-			\printCover
-			\mainmatter
-		}
+		\coverRequiredtrue
 	}
 	
-	% Homework Assignments and Reports (Trabalhos e Relatórios)
+	% Homework Assignments (trabalhos)
 	\DeclareOption{trab}{
-		\renewcommand{\printFrontMatter}
-		{
-			\frontmatter
-			\printCover
-			\mainmatter
-		}
+		\coverRequiredtrue
 	}
 
 	% Scientific Publication (Iniciação Científica)
-		\DeclareOption{inci}{
-		\renewcommand{\printFrontMatter}
-		{
-			\frontmatter
-			\printCover
-			\mainmatter
-		}
+	\DeclareOption{inci}{
+		\coverRequiredtrue
+	}
+	
+	% Internship Report (relatório de estágio)
+	\DeclareOption{relat}{
+		\coverRequiredtrue
+		\titleRequiredtrue
 	}
 	
 	% Final Thesis (Projeto de Fim de Curso)
 	\DeclareOption{pfc}{
-		\renewcommand{\printFrontMatter}
-		{
-			\frontmatter
-			\printTitle
-			\printCover
-			\printCatalog
-			\mainmatter
-		}	
+		\coverRequiredtrue
+		\titleRequiredtrue
+		\catalogRequiredtrue
+		\approvalRequiredtrue
+		
 	}
+	
+	% Master Thesis (tese de mestrado)
+	\DeclareOption{msc}{
+
+	}
+	
+	\providecommand{\imetex@department}{}
+	\DeclareOption{comp}{\renewcommand{\imetex@department}{Seção De Engenharia De Computação / SE8}}
+	\DeclareOption{elo}{\renewcommand{\imetex@department}{Seção De Engenharia Eletrônica / SE3}}
+	\DeclareOption{ele}{\renewcommand{\imetex@department}{Seção De Engenharia Elétrica / SE3}}
+	\DeclareOption{tele}{\renewcommand{\imetex@department}{Seção De Engenharia De Telecomunicações / SE3}}
+	\DeclareOption{mat}{\renewcommand{\imetex@department}{Seção De Engenharia De Materiais / SE?}}
+	\DeclareOption{qui}{\renewcommand{\imetex@department}{Seção De Engenharia Química / SE?}}
+	\DeclareOption{fc}{\renewcommand{\imetex@department}{Seção De Engenharia De Fortificação e Construção / SE?}}
+	\DeclareOption{mec}{\renewcommand{\imetex@department}{Seção De Engenharia Mecânica / SE?}}
 	
 	\ExecuteOptions{notas}
 	\ProcessOptions
 %%
 
 %% Useful Fields
+	% Document Details
+	\providecommand{\imetex@title}{}
+	\renewcommand{\title}[1]{
+		\renewcommand{\imetex@title}{#1}
+	}
+
 	% Authors (Autores)
-	\newcommand{\imetex@authorName}{
-		\theauthor
+	\providecommand{\imetex@authorName}{}
+	\renewcommand{\author}[1]{
+		\renewcommand{\imetex@authorName}{#1}
 	}
 	\providecommand{\imetex@coauthorName}{}
 	\newcommand{\coauthor}[1]{
@@ -121,9 +146,17 @@
 	% (Banca Examinadora)
 	% TODO
 	
+	% Internship Company
+	\providecommand{\imetex@companyName}{}
+	\newcommand{\company}[1]{
+		\renewcommand{\imetex@companyName}{#1}	
+	}
+	
 	% Preamble (Preâmbulo)
 	\providecommand{\imetex@preamble}{}
-	\newcommand{\preamble}[1]{\renewcommand{\imetex@preamble}{#1}	}
+	\newcommand{\preamble}[1]{
+		\renewcommand{\imetex@preamble}{#1}
+	}
 %%
 
 %% Necessary abnTeX2 Specializations
@@ -131,35 +164,50 @@
 %%
 
 %% Main Commands
+	% Front Matter Elements (elementos pré-textuais)
+	\newcommand{\printFrontMatter}{
+		\frontmatter
+		\ifcoverRequired\printCover\fi
+		\iftitleRequired\printTitle\fi
+		\ifcatalogRequired\printCatalog\fi
+		\ifapprovalRequired\printApproval\fi
+		\ifdedicationProvided\printDedication\fi
+		\ifthanksProvided\printThanks\fi
+		\ifepigraphProvided\printEpigraph\fi
+		\iftableOfContentsRequired\printTableOfContents\fi
+		\iftableOfFiguresRequired\printTableOfFigures\fi
+		\iftableOfTablesRequired\printTableOfTables\fi
+		\iftableOfAbbreviationsRequired\printTableOfAbbreviations\fi
+		\iftableOfSymbolsRequired\printTableOfSymbols\fi
+		\ifabstractRequired\printAbstract\fi
+		\iftranslatedAbstractRequired\printTranslatedAbstract\fi
+		\mainmatter
+	}
+
 	% Cover Page (Capa)
 	\newcommand{\printCover}
 	{{
 		\centering
 		\ABNTEXchapterfont
 		\small
-		
-		MINISTÉRIO DA DEFESA\\
-		EXÉRCITO BRASILEIRO\\
-		DEPARTAMENTO DE CIÊNCIA E TECNOLOGIA\\
-		INSTITUTO MILITAR DE ENGENHARIA\\
-		(Real Academia de Artilharia, Fortificação e Desenho/1792)\\
-		CURSO DE GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO\\
+		\imetex@governmentFiliation\\
+		\imetex@department
 		
 		\vspace*{5cm}
 		
 		\ABNTEXsectionfontsize
-		\theauthor\\
+		\imetex@authorName\\
 		
 		\vspace*{5cm}
 		
 		\ABNTEXchapterfontsize
-		\thetitle\\
+		\ifNotEmpty{\imetex@title}{\imetex@title\\}
 		
 		\vfill
+		
 		\large
 		Rio de Janeiro\\
-		\thedate\\
-		
+		\thedate		
 		\clearpage
 	}}
 	
@@ -171,18 +219,18 @@
 			\Large
 			Instituto Militar de Engenharia\\
 			\vspace*{2cm}
-			\theauthor\\
+			\imetex@authorName\\
 			\vspace*{4cm}
-			\thetitle\\
+			\ifNotEmpty{\imetex@title}{\imetex@title\\}
 			\vspace*{3cm}
 		\end{center}
 
 		\hspace{.45\textwidth}
 		\begin{minipage}{.5\textwidth}
 			\SingleSpacing
-			\par \thepreamble
-			\par \ifNoText{\imetex@advisorName}{Orientador: \imetex@advisorName\ - \imetex@advisorTitle}
-			\par \ifNoText{\imetex@coadvisorName}{Co-orientador: \imetex@coadvisorName\ - \imetex@coadvisorTitle}
+			\par \imetex@preamble
+			\par \ifNotEmpty{\imetex@advisorName}{Orientador: \imetex@advisorName\ - \imetex@advisorTitle}
+			\par \ifNotEmpty{\imetex@coadvisorName}{Co-orientador: \imetex@coadvisorName\ - \imetex@coadvisorTitle}
 		\end{minipage}
 
 		\vspace*{\fill}
@@ -257,11 +305,56 @@
 		\clearpage
 	}}
 	
+	% Approval Page (folha de aprovação)
+	\newcommand{\printApproval}{
+		% TODO
+	}
+	
+	% Dedication Page (dedicatória)
+	\newcommand{\printDedication}{
+		% TODO
+	}
+	
+	% Thanks Page (agradecimentos)
+	\newcommand{\printThanks}{
+		% TODO
+	}
+	
+	% Epigraph (epígrafe)
+	\newcommand{\printEpigraph}{
+		% TODO
+	}
+	
+	% Abstract Page (Resumo)
+	\newcommand{\printAbstract}{
+		% TODO
+	}
+	
 	%% Bibliography (Bibliografia)
 	\newcommand{\printBackMatter}
 	{
 		\backmatter
 		\pagestyle{plain}
 		%\bibliography{bibliography}
+	}
+%%
+
+%% Other Commands
+	% Coat of Arms (brasão de armas do brasileiro)
+	\newcommand{\imetex@coatOfArms}{
+		%\includegraphics[scale=0]{•}
+	}
+	
+	% Government Filiation (filiação governamental do IME)
+	\newcommand{\imetex@governmentFiliation}{
+		MINISTÉRIO DA DEFESA\\
+		EXÉRCITO BRASILEIRO\\
+		DEPARTAMENTO DE CIÊNCIA E TECNOLOGIA\\
+		INSTITUTO MILITAR DE ENGENHARIA
+	}
+	
+	% Historical Note (observação histórica do IME)
+	\newcommand{\imetex@historicalNote}{
+		Real Academia de Artilharia, Fortificação e Desenho, 1792
 	}
 %%
