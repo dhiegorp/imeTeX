@@ -1,14 +1,12 @@
-\usepackage[brazil]{babel}
-\usepackage[utf8]{inputenc}		% Caracteres especiais
-\usepackage{amsthm}				% Proof Environment
-\usepackage{amsmath}			% Declaração de Operadores
-\usepackage{media9}				% LaTeX Media Package
-\usepackage{amsfonts}			% Math Fonts
-\usepackage{cmap}             % Mapear caracteres especiais no PDF
-
-
-
-\bibliographystyle{plain}
+%% Required Packages
+	\usepackage{cmap}					% Extra mathematical symbols
+	\usepackage[utf8]{inputenc}			% UTF8 encoding (required by pdflatex)
+	\usepackage[T1]{fontenc}			% Font encoding (required by pdflatex)
+	\usepackage{hyperref}				% Hyperlinks and URLs
+	\usepackage{color}					% Needed for syntax highlight
+	\usepackage[procnames]{listings}	% Environment for code snippets
+	\usepackage{amsopn}					% Declare new math operators
+%%
 
 %% Theorems and Environments
 	\newtheorem{definition}{Definição}[section]
@@ -49,5 +47,82 @@
 			{}{http://www.youtube.com/v/#1?rel=0}   % Flash file
 			\caption{\url{http://www.youtube.com/v/#1?rel=0}}
 	\end{figure}
+	}
+%%
+
+%% Code snippets
+	% Prepare Frontmatter content
+	\renewcommand{\lstlistlistingname}{Lista de códigos}
+	\begingroup\makeatletter
+		\let\newcounter\@gobble\let\setcounter\@gobbletwo
+		\globaldefs\@ne \let\c@loldepth\@ne
+		\newlistof{listings}{lol}{\lstlistlistingname}
+		\newlistentry{lstlisting}{lol}{0}
+	\endgroup
+	\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
+	\let\oldlstlistoflistings\lstlistoflistings
+	\renewcommand{\lstlistoflistings}{%
+		\begingroup%
+			\let\oldnumberline\numberline%
+			\renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
+			\oldlstlistoflistings%
+		\endgroup
+	}
+	
+	% Make references
+	\renewcommand{\lstlistingname}{Código}
+	
+	
+	% Common colors
+	\definecolor{black}{RGB}{0,0,0}
+	\definecolor{magenta}{RGB}{255,0,90}
+	\definecolor{dkblue}{RGB}{0,0,113}
+	\definecolor{red}{RGB}{160,0,0}
+	\definecolor{green}{RGB}{0,150,0}
+	\definecolor{dkgreen}{rgb}{0,0.6,0}
+	\definecolor{gray}{rgb}{0.5,0.5,0.5}
+	\definecolor{mauve}{rgb}{0.58,0,0.82}
+	
+	% Java Snippet Settings
+	\lstset{
+		frame=tb,
+		language=Java,
+		aboveskip=3mm,
+		belowskip=3mm,
+		showstringspaces=false,
+		columns=flexible,
+		basicstyle={\small\ttfamily},
+		numbers=none,
+		numberstyle=\tiny\color{gray},
+		keywordstyle=\color{blue},
+		commentstyle=\color{dkgreen},
+		stringstyle=\color{mauve},
+		breaklines=true,
+		breakatwhitespace=true,
+		tabsize=4
+	}
+
+	% Python Snippet Settings
+	\lstset{
+		language=Python,
+		breakatwhitespace=false,
+		breaklines=true,
+		captionpos=b,
+		frame=single,
+		inputencoding=utf8,
+		keepspaces=true,
+		showstringspaces=false,
+		columns=flexible,
+		basicstyle=\small\ttfamily,
+		numbers=left,
+		numbersep=5pt,
+		numberstyle=\tiny\color{black},
+		title=\lstname,
+		framexleftmargin=10pt,
+		framexleftmargin=15pt,
+		keywordstyle=\color{dkgreen},
+		commentstyle=\color{gray},
+		stringstyle=\color{red},
+		procnamekeys={def,class}
 	}
 %%

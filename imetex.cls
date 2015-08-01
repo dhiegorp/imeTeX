@@ -1,4 +1,4 @@
-%% This work may be distributed and/or modified under the
+%% This work may be distributed and/or modified under the 
 %% conditions of the LaTeX Project Public License, either version 1.3
 %% of this license or (at your option) any later version.
 %% The latest version of this license is in
@@ -6,38 +6,37 @@
 %% and version 1.3 or later is part of all distributions of LaTeX
 %% version 2005/12/01 or later.
 %%
-%% This work has the LPPL maintenance status `maintained'.
+%% This work has the LPPL maintenance status 'maintained'.
 %%
 %% The Current Maintainer of this work is Victor Chaves, vvb.chaves@gmail.com
 %% Discussion about this library can be done at compime16@gmail.com
 %%
-%% Based on ime-abntex2 class by Jan Segre
-%%
 %% Builds on abnTeX2
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
 
-\ProvidesClass{imetex}[2015/04/10 v0.3 imeTeX]
+\ProvidesClass{imetex}[2015/04/10 v1.2 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{abntex2}
+
 \makeindex
 
 %% Packages
 	% Basic Packages
-	\usepackage{ime-style}
-	\usepackage[utf8]{inputenc}   % Codificação de caracteres especiais
-	\usepackage[alf]{abntex2cite} % Citações padrão ABNT
-	\usepackage{graphicx}         % Inclusão de gráficos
+	\usepackage{ime-style}			% Extra functionalities
+	\usepackage{cmap}				% Extra mathematical symbols
+	\usepackage[utf8]{inputenc}		% UTF8 encoding (required by pdflatex)
+	\usepackage[T1]{fontenc}		% Font encoding (required by pdflatex)
+	\usepackage{hyperref}			% Hyperlinks and URLs
+	\usepackage[alf]{abntex2cite}	% ABNT References styles
 
-	% Other Packages
+	\usepackage{graphicx}			% Inclusão de gráficos
+
+	% Main Packages
+	\usepackage{lmodern}			% Standard font
 	\usepackage{amsthm}				% Proof Environment
 	\usepackage{amsfonts}			% Math Fonts
-	\usepackage{cmap}             % Mapear caracteres especiais no PDF
-	\usepackage{lmodern}          % Usa a fonte Latin Modern
-	\usepackage[T1]{fontenc}      % Selecao de codigos de fonte.
 	\usepackage{lastpage}         % Usado pela Ficha catalográfica
 	\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
-	\usepackage{color}            % Controle das cores
-	\usepackage{hyperref}			% Hyperlinks and URLs
 %%
 
 %% Class Variables
@@ -52,6 +51,7 @@
 	\newif\iftableOfContentsRequired
 	\newif\iftableOfFiguresRequired
 	\newif\iftableOfTablesRequired
+	\newif\iftableOfCodesRequired
 	\newif\iftableOfAbbreviationsRequired
 	\newif\iftableOfSymbolsRequired
 	\newif\ifabstractRequired
@@ -61,17 +61,21 @@
 %% Class Options
 	% Class Notes (notas de aula) : default option
 	\DeclareOption{notas}{
-		\coverRequiredtrue
+		% nothing required, life is too short
 	}
 	
 	% Homework Assignments (trabalhos)
 	\DeclareOption{trab}{
 		\coverRequiredtrue
+		\tableOfContentsRequiredtrue
 	}
 
 	% Scientific Publication (Iniciação Científica)
 	\DeclareOption{inci}{
 		\coverRequiredtrue
+		\titleRequiredtrue
+		\tableOfContentsRequiredtrue
+		\tableOfCodesRequiredtrue
 	}
 	
 	% Internship Report (relatório de estágio)
@@ -114,8 +118,12 @@
 	\renewcommand{\title}[1]{
 		\renewcommand{\imetex@title}{#1}
 	}
+	\providecommand{\imetex@subtitle}{}
+	\newcommand{\subtitle}[1]{
+		\renewcommand{\imetex@subtitle}{#1}
+	}
 
-	% Authors (Autores)
+	% Authors
 	\providecommand{\imetex@authorName}{}
 	\renewcommand{\author}[1]{
 		\renewcommand{\imetex@authorName}{#1}
@@ -125,28 +133,24 @@
 		\renewcommand{\imetex@coauthorName}{#1}
 	}
 	
-	% Advisors (Orientadores)
+	% Advisors
 	\providecommand{\imetex@advisorName}{}
 	\providecommand{\imetex@advisorTitle}{}
-	\providecommand{\imetex@advisorInstitution}{}
-	\newcommand{\advisor}[3]{
-		\renewcommand{\imetex@advisorName}{#1}
-		\renewcommand{\imetex@advisorTitle}{#2}
-		\renewcommand{\imetex@advisorInstitution}{#3}
+	\newcommand{\advisor}[2][]{
+		\renewcommand{\imetex@advisorTitle}{#1}
+		\renewcommand{\imetex@advisorName}{#2}
 	}
 	\providecommand{\imetex@coadvisorName}{}
 	\providecommand{\imetex@coadvisorTitle}{}
-	\providecommand{\imetex@coadvisorInstitution}{}
-	\newcommand{\coadvisor}[3]{
-		\renewcommand{\imetex@coadvisorName}{#1}
-		\renewcommand{\imetex@coadvisorTitle}{#2}
-		\renewcommand{\imetex@coadvisorInstitution}{#3}
+	\newcommand{\coadvisor}[2][]{
+		\renewcommand{\imetex@coadvisorTitle}{#1}
+		\renewcommand{\imetex@coadvisorName}{#2}
 	}
 	
 	% (Banca Examinadora)
 	% TODO
 	
-	% Internship Company
+	% Company
 	\providecommand{\imetex@companyName}{}
 	\newcommand{\company}[1]{
 		\renewcommand{\imetex@companyName}{#1}	
@@ -177,6 +181,7 @@
 		\iftableOfContentsRequired\printTableOfContents\fi
 		\iftableOfFiguresRequired\printTableOfFigures\fi
 		\iftableOfTablesRequired\printTableOfTables\fi
+		\iftableOfCodesRequired\printTableOfCodes\fi
 		\iftableOfAbbreviationsRequired\printTableOfAbbreviations\fi
 		\iftableOfSymbolsRequired\printTableOfSymbols\fi
 		\ifabstractRequired\printAbstract\fi
@@ -336,6 +341,19 @@
 		\backmatter
 		\pagestyle{plain}
 		%\bibliography{bibliography}
+	}
+	
+	\newcommand{\printTableOfContents}{
+		\tableofcontents*
+		\clearpage
+	}
+	
+	\newcommand{\printTableOfCodes}{
+		\pdfbookmark[0]{\lstlistlistingname}{lol}
+		\begin{KeepFromToc}
+			\lstlistoflistings
+		\end{KeepFromToc}
+		\cleardoublepage
 	}
 %%
 
