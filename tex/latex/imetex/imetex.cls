@@ -16,28 +16,7 @@
 
 \ProvidesClass{imetex}[2015/04/10 v1.2 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
-\LoadClass{abntex2}
-
 \makeindex
-
-%% Packages
-	% Basic Packages
-	\usepackage{ime-style}			% Extra functionalities
-	\usepackage{cmap}				% Extra mathematical symbols
-	\usepackage[utf8]{inputenc}		% UTF8 encoding (required by pdflatex)
-	\usepackage[T1]{fontenc}		% Font encoding (required by pdflatex)
-	\usepackage{hyperref}			% Hyperlinks and URLs
-	\usepackage[alf]{abntex2cite}	% ABNT References styles
-
-	\usepackage{graphicx}			% Inclusão de gráficos
-
-	% Main Packages
-	\usepackage{lmodern}			% Standard font
-	\usepackage{amsthm}				% Proof Environment
-	\usepackage{amsfonts}			% Math Fonts
-	\usepackage{lastpage}         % Usado pela Ficha catalográfica
-	\usepackage{indentfirst}      % Indenta o primeiro parágrafo de cada seção.
-%%
 
 %% Class Variables
 	% Conditionals
@@ -59,7 +38,7 @@
 %%
 
 %% Class Options
-	% Class Notes (notas de aula) : default option
+	% Class Notes (notas de aula)
 	\DeclareOption{notas}{
 		% nothing required, life is too short
 	}
@@ -107,10 +86,36 @@
 	\DeclareOption{qui}{\renewcommand{\imetex@department}{Seção De Engenharia Química / SE?}}
 	\DeclareOption{fc}{\renewcommand{\imetex@department}{Seção De Engenharia De Fortificação e Construção / SE?}}
 	\DeclareOption{mec}{\renewcommand{\imetex@department}{Seção De Engenharia Mecânica / SE?}}
+
+	\DeclareOption*{
+		\PassOptionsToClass{\CurrentOption}{abntex2}
+	}
 	
-	\ExecuteOptions{notas}
-	\ProcessOptions
+	\ProcessOptions\relax
+	\LoadClass[oneside]{abntex2}
 %%
+
+%% Packages
+	% Basic Packages
+	\usepackage{cmap}				% Extra mathematical symbols
+	\usepackage[utf8]{inputenc}		% UTF8 encoding
+	\usepackage[T1]{fontenc}		% Font encoding
+	\usepackage{hyperref}			% Hyperlinks and URLs
+	\usepackage{graphicx}			% Include grafics
+	\usepackage{lmodern}			% Standard font
+	\usepackage{amsthm}				% Proof Environment
+	\usepackage{amsfonts}			% Math Fonts
+
+	% Main Packages
+	\usepackage{ime-style}			% Extra functionalities
+	\usepackage[alf]{abntex2cite}	% ABNT References styles
+
+	% Extra Packages
+	\usepackage{physics}			% Physics Notations
+	\usepackage{lastpage}			% Usado pela Ficha catalográfica
+	\usepackage{indentfirst}		% Indent the first paragraph (not required by ABNT)
+%%
+
 
 %% Useful Fields
 	% Document Details
@@ -161,10 +166,6 @@
 	\newcommand{\preamble}[1]{
 		\renewcommand{\imetex@preamble}{#1}
 	}
-%%
-
-%% Necessary abnTeX2 Specializations
-
 %%
 
 %% Main Commands
