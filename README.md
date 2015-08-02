@@ -7,8 +7,9 @@ Modelos padrões de LaTeX para trabalhos acadêmicos do Instituto Militar de Eng
 
 ## Exemplos
 ### Apresentação (Slides)
-
-apresentação.tex
+Subclasse com template imbutido que personaliza a classe Beamer de apresentações de slides. Uso genérico em qualquer trabalho e levemente personalizável. Exemplos:
+ * [apresentacao.tex](https://github.com/IME-SE8/imeTeX/blob/master/doc/latex/imetex/examples/apresentacao.tex)
+ * [apresentacao.pdf](https://github.com/IME-SE8/imeTeX/blob/master/doc/latex/imetex/examples/apresentacao.pdf)
 
 ### Relatório de Laboratório de Física
 Provavelmente o primeiro trabalho no IME em que LaTeX se torna importante.
@@ -16,9 +17,7 @@ Provavelmente o primeiro trabalho no IME em que LaTeX se torna importante.
 labfisica.tex (em andamento)
 
 ### Relatório de Iniciação Científica
-Relatório que exige mais elementos do que os trabalhos comuns (como orientadores e banca de avaliação). 
-
-Exemplos:
+Relatório que exige mais elementos do que os trabalhos comuns (folha de rosto e oridetadores). Exemplos:
  * [inci.tex](https://github.com/IME-SE8/imeTeX/blob/master/doc/latex/imetex/examples/inci.tex)
  * [inci.pdf](https://github.com/IME-SE8/imeTeX/blob/master/doc/latex/imetex/examples/inci.pdf)
 
