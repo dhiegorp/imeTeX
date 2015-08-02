@@ -6,15 +6,14 @@
 %% and version 1.3 or later is part of all distributions of LaTeX
 %% version 2005/12/01 or later.
 %%
-%% This work has the LPPL maintenance status 'maintained'.
+%% This work has the LPPL maintenance status 'author-maintained'.
 %%
 %% The Current Maintainer of this work is Victor Chaves, vvb.chaves@gmail.com
-%% Discussion about this library can be done at compime16@gmail.com
 %%
 %% Builds on abnTeX2
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
 
-\ProvidesClass{imetex}[2015/04/10 v0.1 imeTeX]
+\ProvidesClass{imetex}[2015/08/02 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \makeindex
 

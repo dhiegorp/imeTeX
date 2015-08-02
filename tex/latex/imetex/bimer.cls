@@ -13,7 +13,7 @@
 %% Builds on `beamer` class
 %% Inspired by Morten Larsen's Frederiksberg theme
 
-\ProvidesClass{bimer}[2015/04/10 v0.3 imeTeX]
+\ProvidesClass{bimer}[2015/08/02 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{beamer}
 
