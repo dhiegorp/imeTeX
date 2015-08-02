@@ -14,7 +14,7 @@
 %% Builds on abnTeX2
 %% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
 
-\ProvidesClass{imetex}[2015/04/10 v1.2 imeTeX]
+\ProvidesClass{imetex}[2015/04/10 v0.1 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \makeindex
 
