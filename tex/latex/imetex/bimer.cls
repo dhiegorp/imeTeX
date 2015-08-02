@@ -6,27 +6,39 @@
 %% and version 1.3 or later is part of all distributions of LaTeX
 %% version 2005/12/01 or later.
 %%
-%% This work has the LPPL maintenance status `maintained'.
+%% This work has the LPPL maintenance status `author-maintained'.
 %%
 %% The Current Maintainer of this work is Victor Chaves, vvb.chaves+dev@gmail.com
 %%
 %% Builds on `beamer` class
+%% Inspired by Morten Larsen's Frederiksberg theme
 
 \ProvidesClass{bimer}[2015/04/10 v0.3 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{beamer}
 
-%% Package Dependencies
-	\RequirePackage{tikz}
-%%
-
-%% Necessary Packages
-	% Codificação de caracteres especiais
-	\usepackage[utf8]{inputenc}
+%% Packages
+	% Basic Packages
+	\usepackage{cmap}				% Extra mathematical symbols
+	\usepackage[utf8]{inputenc}		% UTF8 encoding
+	\usepackage[T1]{fontenc}		% Font encoding
+	\usepackage{hyperref}			% Hyperlinks and URLs
+	\usepackage{graphicx}			% Include grafics
+	\usepackage{lmodern}			% Standard font
+	\usepackage{amsthm}				% Proof Environment
+	\usepackage{amsfonts}			% Math Fonts
+	\usepackage{tikz}				% Drawing
+	
+	% Main Packages
+	%\usepackage{ime-style}			% Extra functionalities
+	\usepackage[alf]{abntex2cite}	% ABNT References styles
+	
+	% Extra Packages
+	\usepackage{physics}			% Physics Notations
 %%
 
 %% Variables
-	\newcommand{\bimer@institutecontext}{}
+	\newcommand{\bimer@institutecontext}{\hfill}
 	\newcommand{\context}[1]{\renewcommand{\bimer@institutecontext}{#1}}
 	
 	% Institute Specification
@@ -65,9 +77,7 @@
 	% Set header text font, size, color and uppercase it.
 	\newcommand{\formatheader}[1]{{%
 		\color{white}%
-		\fontencoding{T1}\fontfamily{ugm}\fontshape{n}\fontseries{bx}\fontsize{5.4}{5.4pt}\selectfont%
-		\uppercase\expandafter{#1}%
-		%\rmfamily\scshape\mdseries\fontsize{7.2}{7.2pt}\selectfont{#1}
+		\rmfamily\scshape\mdseries\fontsize{7.2}{7.2pt}\selectfont{#1}%
 	}}
 	
 	% Isolated header template
@@ -78,12 +88,12 @@
 	}}
 	
 	% Activate Everywhere
-	\setbeamertemplate{headline}{{\printHeader}}
+	\setbeamertemplate{headline}{\printHeader}
+%%
 
 %% Title Page (Dangerous Zone)
 	\setbeamertemplate{title page}
 	{%
-		\global\beamer@frametopskip=0pt plus 1fill\relax
 		% Upper Left Figure (IME)
 		\raisebox{-0.11\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin%
           \pgfdeclareimage[height=.078\paperwidth]{IMEfront}{IMEfront}%
@@ -93,8 +103,8 @@
         \raisebox{-.028\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin\printHeader}}%
         % Lower Right Figure
         \raisebox{-\paperheight}[0pt][0pt]{%
-        	\hskip-\Gm@lmargin
-			\rlap{\hskip\paperwidth
+        	\hskip-\Gm@lmargin%
+			\rlap{\hskip\paperwidth%
 				\pgfdeclareimage[width=.375\paperwidth]{quarter}{\bimer@institutequarterlogo}%
 				\llap{\pgfuseimage{quarter}}%
 			}%
