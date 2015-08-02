@@ -37,7 +37,7 @@
 	\usepackage{physics}			% Physics Notations
 %%
 
-%% Variables
+%% Content Variables
 	\newcommand{\bimer@institutecontext}{\hfill}
 	\newcommand{\context}[1]{\renewcommand{\bimer@institutecontext}{#1}}
 	
@@ -46,6 +46,10 @@
 	\newcommand{\bimer@institutedepartment}{seção de ensino básico}
 	\newcommand{\bimer@institutequarterlogo}{QEMquarter}
 	
+	% Images
+	\pgfdeclareimage[height=.078\paperwidth]{title_UL_figure}{IMEfront}
+	\pgfdeclareimage[height=.090\paperwidth]{title_UR_figure}{IMEsymbol}
+	\pgfdeclareimage[width=.375\paperwidth]{title_LR_figure}{\bimer@institutequarterlogo}
 %%
 
 %% Class Options
@@ -63,7 +67,7 @@
 
 %% Main
 	\newcommand{\printFrontMatter}{
-		\frame[plain] \titlepage
+		\frame[plain]\titlepage
 	}
 	
 	\newcommand{\printBackMatter}{
@@ -91,54 +95,55 @@
 	\setbeamertemplate{headline}{\printHeader}
 %%
 
-%% Title Page (Dangerous Zone)
+%% Title Page
 	\setbeamertemplate{title page}
 	{%
-		% Upper Left Figure (IME)
-		\raisebox{-0.11\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin%
-          \pgfdeclareimage[height=.078\paperwidth]{IMEfront}{IMEfront}%
-          \pgfuseimage{IMEfront}}%
+		% Header
+		\rlap{% Force start in right margin
+			\hskip-\Gm@lmargin% Ignore default left margin alignment
+			\printHeader% Insert Header Manually (must be used in plain frame)
 		}%
-        % Manualy insert header
-        \raisebox{-.028\paperwidth}[0pt][0pt]{\rlap{\hskip-\Gm@lmargin\printHeader}}%
-        % Lower Right Figure
-        \raisebox{-\paperheight}[0pt][0pt]{%
-        	\hskip-\Gm@lmargin%
-			\rlap{\hskip\paperwidth%
-				\pgfdeclareimage[width=.375\paperwidth]{quarter}{\bimer@institutequarterlogo}%
-				\llap{\pgfuseimage{quarter}}%
-			}%
-        }%
-        % Presentation context (User Defined)
-        {\vskip.09\paperwidth\usebeamercolor[fg]{titlepage head}%
-        	\sffamily\fontsize{8}{8pt}\upshape\mdseries
-        	\bimer@institutecontext\par%
-        }%
+		% Upper Left Figure
+		\rlap{% Force start in left margin
+			\hskip-\Gm@lmargin% Ignore default left margin alignment
+			\pgfuseimage{title_UL_figure}% Inserts the UL figure
+		}%
+        % Presentation Context
+        \vskip-.015\paperwidth% Invades the UL figure a little
+        \sffamily\fontsize{8}{8pt}\upshape\mdseries\bimer@institutecontext\par% Inserts Context at default margin
         % Context Line and Logo
-		{\setlength{\beamer@rightsidebar}{.1138\paperwidth}\vskip-.075\paperwidth\hskip-\Gm@lmargin\rlap{%
-			\begin{pgfpicture}{0pt}{-.0005\paperwidth}{\paperwidth}{.0005\paperwidth}%
-			\begingroup
-			{\color{black}%
-				\pgfpathrectangle{\pgfpoint{0pt}{-.0005\paperwidth}}{\pgfpoint{\paperwidth}{.0005\paperwidth}}\pgfusepathqfill%
-			}%
-			\endgroup
+		\vskip-.075\paperwidth% Invades the UL figure a lot
+		\rlap{% Force start in left margin, ignoring Presentation Context
+			\hskip-\Gm@lmargin% Ignore default left  margin alignment
+			\begin{pgfpicture}{0}{-.0005\paperwidth}{\paperwidth}{.0005\paperwidth}% Thin figure for our line
+				\pgfpathrectangle{\pgfpoint{0}{.0005\paperwidth}}{\pgfpoint{\paperwidth}{.0005\paperwidth}}% Thin rectangle
+				\pgfusepathqfill% Fill the rectangle, painting the line
 			\end{pgfpicture}%
-			\hskip-.5\beamer@rightsidebar\hskip-.0325\paperwidth
-        	\raisebox{-.0055\paperwidth}{%
-        		\pgfdeclareimage[height=.09\paperwidth]{IMEsymbol}{IMEsymbol}%
-        		\pgfuseimage{IMEsymbol}%
+			\hskip-.115\paperwidth% Invades the lign horizontaly
+        	\raisebox{-3pt}{% Invades the lign verticaly
+        		\pgfuseimage{title_UR_figure}%  Inserts the UR figure
         	}%
-        }}%
-		\vskip0pt plus 1filll%
+        }%
+		\vskip0pt plus 1filll% Fill vertical space with weight 1
         %% Presentation Info
-        \parbox{\textwidth}{
+        \parbox{\textwidth}{% Title Content
 			{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
 			{\usebeamerfont{subtitle}\vskip.1\baselineskip\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
 			{\usebeamerfont{author}\vskip\baselineskip\usebeamercolor[fg]{author}\insertauthor\par}%
 			{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
-			{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+			{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}%
         }
-        \vskip0pt plus 2filll
+        \vskip0pt plus 2filll% Fill vertical space with weight 2
+        % Lower Right Figure
+        \makebox[\linewidth][l]{% A box with no margin restrictions (avoid anoying warnings)
+	        \raisebox{0pt}[0pt][0pt]{% A box which doesn't actually take space (makes vertical fills above work)
+	        	\hskip-\Gm@rmargin% Ignore default margin alignment
+				\hskip\paperwidth% Skip to the end of the page
+				\llap{% Position the figure before the end of page
+					\pgfuseimage{title_LR_figure}% Insert LR figure
+				}%
+			}%
+		}%
 	}
 %%
 
