@@ -108,10 +108,10 @@
 			\hskip-\Gm@lmargin% Ignore default left margin alignment
 			\pgfuseimage{title_UL_figure}% Inserts the UL figure
 		}%
-        % Presentation Context
-        \vskip-.015\paperwidth% Invades the UL figure a little
-        \sffamily\fontsize{8}{8pt}\upshape\mdseries\bimer@institutecontext\par% Inserts Context at default margin
-        % Context Line and Logo
+		% Presentation Context
+		\vskip-.015\paperwidth% Invades the UL figure a little
+		\sffamily\fontsize{8}{8pt}\upshape\mdseries\bimer@institutecontext\par% Inserts Context at default margin
+		% Context Line and Logo
 		\vskip-.075\paperwidth% Invades the UL figure a lot
 		\rlap{% Force start in left margin, ignoring Presentation Context
 			\hskip-\Gm@lmargin% Ignore default left  margin alignment
@@ -120,24 +120,24 @@
 				\pgfusepathqfill% Fill the rectangle, painting the line
 			\end{pgfpicture}%
 			\hskip-.115\paperwidth% Invades the lign horizontaly
-        	\raisebox{-3pt}{% Invades the lign verticaly
-        		\pgfuseimage{title_UR_figure}%  Inserts the UR figure
-        	}%
-        }%
+			\raisebox{-3pt}{% Invades the lign verticaly
+				\pgfuseimage{title_UR_figure}%  Inserts the UR figure
+			}%
+		}%
 		\vskip0pt plus 1filll% Fill vertical space with weight 1
-        %% Presentation Info
-        \parbox{\textwidth}{% Title Content
+		%% Presentation Info
+		\parbox{\textwidth}{% Title Content
 			{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
 			{\usebeamerfont{subtitle}\vskip.1\baselineskip\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
 			{\usebeamerfont{author}\vskip\baselineskip\usebeamercolor[fg]{author}\insertauthor\par}%
 			{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
 			{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}%
-        }
-        \vskip0pt plus 2filll% Fill vertical space with weight 2
-        % Lower Right Figure
-        \makebox[\linewidth][l]{% A box with no margin restrictions (avoid anoying warnings)
-	        \raisebox{0pt}[0pt][0pt]{% A box which doesn't actually take space (makes vertical fills above work)
-	        	\hskip-\Gm@rmargin% Ignore default margin alignment
+		}
+		\vskip0pt plus 2filll% Fill vertical space with weight 2
+		% Lower Right Figure
+		\makebox[\linewidth][l]{% A box with no margin restrictions (avoid anoying warnings)
+			\raisebox{0pt}[0pt][0pt]{% A box which doesn't actually take space (makes vertical fills above work)
+				\hskip-\Gm@rmargin% Ignore default margin alignment
 				\hskip\paperwidth% Skip to the end of the page
 				\llap{% Position the figure before the end of page
 					\pgfuseimage{title_LR_figure}% Insert LR figure
