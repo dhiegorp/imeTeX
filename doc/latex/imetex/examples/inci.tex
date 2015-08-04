@@ -1,4 +1,4 @@
-\documentclass[pfc]{imetex}
+\documentclass[inci]{imetex}
 
 %% Capa
 \author{Igor Cesar Torres de Oliveira}
@@ -11,9 +11,10 @@ Iniciação em Desenvolvimento Tecnológico e Inovação do
 CNPq / Instituto Militar de Engenharia.}
 \advisor[D.C.]{Prof. Alex Garcia}
 
+%% Referências
+\references{bibliografia}
 
-\begin{document} 
-\printFrontMatter
+\begin{document}
 
 \chapter*{Resumo}
 Usando a computação clássica, baseada em registradores binários e lógica determinística, uma série de problemas computacionais não possuem solução eficiente. Tais problemas são de grande interesse para a humanidade, pois estão relacionados com criptografia, inteligência artificial e problemas NP de modo geral. A computação quântica surge como uma possibilidade para a resolução de tais problemas, principalmente pelos algoritmos quânticos utilizarem processamento simultâneo ao invés de sequencial. Nesse trabalho foram estudados os primeiros algoritmos quânticos de Deutsch, Deutsch-Jozsa, Simon, Grover e Shor, bem como a fundamentação matemática para tal, e implementadas simulações dos algoritmos de Deutsch e Deutsh-Jozsa.
@@ -343,7 +344,5 @@ Entretanto todos os casos vistos, a simulação de um computador quântico é ma
 
 Portanto as simulações são úteis em caráter de prova de conceito e demonstração, porém é necessário a implementação em hardware específico para um real ganho computacional.
 
-\printBackMatter
 \nocite{yanofsky}
-\bibliography{bibliografia}
 \end{document}

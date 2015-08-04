@@ -15,7 +15,6 @@
 
 \ProvidesClass{imetex}[2015/08/02 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
-\makeindex
 
 %% Class Variables
 	% Conditionals
@@ -98,6 +97,7 @@
 	\usepackage{lmodern}			% Standard font
 	\usepackage{amsthm}				% Proof Environment
 	\usepackage{amsfonts}			% Math Fonts
+	\usepackage{etoolbox}			% Toggles and \begin{document} hook
 
 	% Main Packages
 	\usepackage{ime-style}			% Extra functionalities
@@ -110,6 +110,11 @@
 	\usepackage[figure,table,lstlisting]{totalcount}
 %%
 
+%% Tweaks
+	\AtBeginDocument{\makeindex}
+	\AfterEndPreamble{\printFrontMatter}
+	\AtEndDocument{\printBackMatter}
+%%
 
 %% Useful Fields
 	% Document Details
@@ -159,6 +164,11 @@
 	\providecommand{\imetex@preamble}{}
 	\newcommand{\preamble}[1]{
 		\renewcommand{\imetex@preamble}{#1}
+	}
+	
+	\providecommand{\imetex@bibliography}{}
+	\newcommand{\references}[1]{
+		\renewcommand{\imetex@bibliography}{#1}
 	}
 %%
 
@@ -405,7 +415,7 @@
 	{
 		\backmatter
 		\pagestyle{plain}
-		%\bibliography{bibliography}
+		\bibliography{\imetex@bibliography}
 	}
 %%
 
