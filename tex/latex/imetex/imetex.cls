@@ -53,6 +53,8 @@
 		\coverRequiredtrue
 		\titleRequiredtrue
 		\tableOfContentsRequiredtrue
+		\tableOfFiguresRequiredtrue
+		\tableOfTablesRequiredtrue
 		\tableOfCodesRequiredtrue
 	}
 	
@@ -68,7 +70,13 @@
 		\titleRequiredtrue
 		\catalogRequiredtrue
 		\approvalRequiredtrue
-		
+		\tableOfContentsRequiredtrue
+		\tableOfFiguresRequiredtrue
+		\tableOfTablesRequiredtrue
+		\tableOfCodesRequiredtrue
+		\tableOfAbbreviationsRequiredtrue
+		\tableOfSymbolsRequiredtrue
+		\abstractRequiredtrue
 	}
 	
 	% Master Thesis (tese de mestrado)
@@ -113,6 +121,7 @@
 	\usepackage{physics}			% Physics Notations
 	\usepackage{lastpage}			% Usado pela Ficha catalográfica
 	\usepackage{indentfirst}		% Indent the first paragraph (not required by ABNT)
+	\usepackage[figure,table,lstlisting]{totalcount}
 %%
 
 
@@ -152,7 +161,7 @@
 	}
 	
 	% (Banca Examinadora)
-	% TODO
+	%TODO
 	
 	% Company
 	\providecommand{\imetex@companyName}{}
@@ -171,17 +180,45 @@
 	% Front Matter Elements (elementos pré-textuais)
 	\newcommand{\printFrontMatter}{
 		\frontmatter
-		\ifcoverRequired\printCover\fi
-		\iftitleRequired\printTitle\fi
-		\ifcatalogRequired\printCatalog\fi
-		\ifapprovalRequired\printApproval\fi
-		\ifdedicationProvided\printDedication\fi
-		\ifthanksProvided\printThanks\fi
-		\ifepigraphProvided\printEpigraph\fi
-		\iftableOfContentsRequired\printTableOfContents\fi
-		\iftableOfFiguresRequired\printTableOfFigures\fi
-		\iftableOfTablesRequired\printTableOfTables\fi
-		\iftableOfCodesRequired\printTableOfCodes\fi
+		\ifcoverRequired
+			\printCover
+		\fi
+		\iftitleRequired
+			\printTitle
+		\fi
+		\ifcatalogRequired
+			\printCatalog
+		\fi
+		\ifapprovalRequired
+			\printApproval
+		\fi
+		\ifdedicationProvided
+			\printDedication
+		\fi
+		\ifthanksProvided
+			\printThanks
+		\fi
+		\ifepigraphProvided
+			\printEpigraph
+		\fi
+		\iftableOfContentsRequired
+			\printTableOfContents
+		\fi
+		\iftableOfFiguresRequired
+			\iftotalfigures
+				\printTableOfFigures
+			\fi
+		\fi
+		\iftableOfTablesRequired
+			\iftotaltables
+				\printTableOfTables
+			\fi
+		\fi
+		\iftableOfCodesRequired
+			\iftotallstlistings
+				\printTableOfCodes
+			\fi
+		\fi
 		\iftableOfAbbreviationsRequired\printTableOfAbbreviations\fi
 		\iftableOfSymbolsRequired\printTableOfSymbols\fi
 		\ifabstractRequired\printAbstract\fi
@@ -312,27 +349,64 @@
 	
 	% Approval Page (folha de aprovação)
 	\newcommand{\printApproval}{
-		% TODO
+		%TODO
 	}
 	
 	% Dedication Page (dedicatória)
 	\newcommand{\printDedication}{
-		% TODO
+		%TODO
 	}
 	
 	% Thanks Page (agradecimentos)
 	\newcommand{\printThanks}{
-		% TODO
+		%TODO
 	}
 	
 	% Epigraph (epígrafe)
 	\newcommand{\printEpigraph}{
-		% TODO
+		%TODO
+	}
+	
+	% Table of Contents (Sumário)
+	\newcommand{\printTableOfContents}{
+		\tableofcontents*
+		\clearpage
+	}
+	
+	% List of Figures (Lista de figuras)
+	\newcommand{\printTableOfFigures}{
+		\listoffigures*
+		\clearpage
+	}
+	
+	% List of Tables (Lista de tabelas)
+	\newcommand{\printTableOfTables}{
+		\listoftables*
+		\clearpage
+	}
+	
+	% List of Listings (Lista de códigos)
+	\newcommand{\printTableOfCodes}{
+		\pdfbookmark[0]{\lstlistlistingname}{lol}
+		\begin{KeepFromToc}
+			\lstlistoflistings
+		\end{KeepFromToc}
+		\cleardoublepage
+	}
+	
+	% List of Abbreviations (Lista de abreviações)
+	\newcommand{\printTableOfAbbreviations}{
+		%TODO
 	}
 	
 	% Abstract Page (Resumo)
 	\newcommand{\printAbstract}{
-		% TODO
+		%TODO
+	}
+	
+	% Translated Abstract Page (Resumo Traduzido)
+	\newcommand{\printTranslatedAbstract}{
+		%TODO
 	}
 	
 	%% Bibliography (Bibliografia)
@@ -341,19 +415,6 @@
 		\backmatter
 		\pagestyle{plain}
 		%\bibliography{bibliography}
-	}
-	
-	\newcommand{\printTableOfContents}{
-		\tableofcontents*
-		\clearpage
-	}
-	
-	\newcommand{\printTableOfCodes}{
-		\pdfbookmark[0]{\lstlistlistingname}{lol}
-		\begin{KeepFromToc}
-			\lstlistoflistings
-		\end{KeepFromToc}
-		\cleardoublepage
 	}
 %%
 
