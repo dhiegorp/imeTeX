@@ -27,41 +27,33 @@
 	\newif\ifthanksProvided
 	\newif\ifepigraphProvided
 	\newif\iftableOfContentsRequired
-	\newif\iftableOfFiguresRequired
-	\newif\iftableOfTablesRequired
-	\newif\iftableOfCodesRequired
-	\newif\iftableOfAbbreviationsRequired
-	\newif\iftableOfSymbolsRequired
+	\newif\iflistOfFiguresRequired
+	\newif\iflistOfTablesRequired
+	\newif\iflistOfCodesRequired
+	\newif\iflistOfAbbreviationsRequired
+	\newif\iflistOfSymbolsRequired
 	\newif\ifabstractRequired
 	\newif\iftranslatedAbstractRequired
+	
+	% Information
+	\providecommand{\imetex@department}{}
 %%
 
 %% Class Options
-	% Class Notes (notas de aula)
-	\DeclareOption{notas}{
-		% nothing required, life is too short
-	}
-	
-	% Homework Assignments (trabalhos)
-	\DeclareOption{trab}{
+	% Laboratory Reports (Labs & Práticas)
+	\DeclareOption{lab}{
 		\coverRequiredtrue
 		\tableOfContentsRequiredtrue
 	}
 
-	% Scientific Publication (Iniciação Científica)
+	% Scientific Reports (TD/IP & PIBITI/PIBIC)
 	\DeclareOption{inci}{
 		\coverRequiredtrue
 		\titleRequiredtrue
 		\tableOfContentsRequiredtrue
-		\tableOfFiguresRequiredtrue
-		\tableOfTablesRequiredtrue
-		\tableOfCodesRequiredtrue
-	}
-	
-	% Internship Report (relatório de estágio)
-	\DeclareOption{relat}{
-		\coverRequiredtrue
-		\titleRequiredtrue
+		\listOfFiguresRequiredtrue
+		\listOfTablesRequiredtrue
+		\listOfCodesRequiredtrue
 	}
 	
 	% Final Thesis (Projeto de Fim de Curso)
@@ -71,20 +63,14 @@
 		\catalogRequiredtrue
 		\approvalRequiredtrue
 		\tableOfContentsRequiredtrue
-		\tableOfFiguresRequiredtrue
-		\tableOfTablesRequiredtrue
-		\tableOfCodesRequiredtrue
-		\tableOfAbbreviationsRequiredtrue
-		\tableOfSymbolsRequiredtrue
+		\listOfFiguresRequiredtrue
+		\listOfTablesRequiredtrue
+		\listOfCodesRequiredtrue
+		\listOfAbbreviationsRequiredtrue
+		\listOfSymbolsRequiredtrue
 		\abstractRequiredtrue
 	}
 	
-	% Master Thesis (tese de mestrado)
-	\DeclareOption{msc}{
-
-	}
-	
-	\providecommand{\imetex@department}{}
 	\DeclareOption{comp}{\renewcommand{\imetex@department}{Seção De Engenharia De Computação / SE8}}
 	\DeclareOption{elo}{\renewcommand{\imetex@department}{Seção De Engenharia Eletrônica / SE3}}
 	\DeclareOption{ele}{\renewcommand{\imetex@department}{Seção De Engenharia Elétrica / SE3}}
@@ -204,23 +190,23 @@
 		\iftableOfContentsRequired
 			\printTableOfContents
 		\fi
-		\iftableOfFiguresRequired
+		\iflistOfFiguresRequired
 			\iftotalfigures
-				\printTableOfFigures
+				\printListOfFigures
 			\fi
 		\fi
-		\iftableOfTablesRequired
+		\iflistOfTablesRequired
 			\iftotaltables
-				\printTableOfTables
+				\printListOfTables
 			\fi
 		\fi
-		\iftableOfCodesRequired
+		\iflistOfCodesRequired
 			\iftotallstlistings
-				\printTableOfCodes
+				\printListOfCodes
 			\fi
 		\fi
-		\iftableOfAbbreviationsRequired\printTableOfAbbreviations\fi
-		\iftableOfSymbolsRequired\printTableOfSymbols\fi
+		\iflistOfAbbreviationsRequired\printListOfAbbreviations\fi
+		\iflistOfSymbolsRequired\printListOfSymbols\fi
 		\ifabstractRequired\printAbstract\fi
 		\iftranslatedAbstractRequired\printTranslatedAbstract\fi
 		\mainmatter
@@ -329,7 +315,7 @@
 				\parbox[t]{2cm}{\hspace{4mm} }
 				\parbox[t]{9.5cm}{\noindent }\\
 				\parbox[t]{2cm}{\hspace{4mm} }
-				\parbox[t]{9.5cm}{\noindent \hspace{4mm}  /{\let\\=, \theauthor}; orientados por \imprimirorientador\ - Rio de Janeiro: Instituto Militar de Engenharia, \thedate.}\\
+				\parbox[t]{9.5cm}{\noindent \hspace{4mm}  /{\let\\=, \imetex@authorName}; orientados por \imetex@advisorName - Rio de Janeiro: Instituto Militar de Engenharia, \thedate.}\\
 				\parbox[t]{2cm}{\ }
 				\parbox[t]{9.5cm}{\noindent \hspace{4mm}}\\
 				[\baselineskip]
@@ -374,19 +360,19 @@
 	}
 	
 	% List of Figures (Lista de figuras)
-	\newcommand{\printTableOfFigures}{
+	\newcommand{\printListOfFigures}{
 		\listoffigures*
 		\clearpage
 	}
 	
 	% List of Tables (Lista de tabelas)
-	\newcommand{\printTableOfTables}{
+	\newcommand{\printListOfTables}{
 		\listoftables*
 		\clearpage
 	}
 	
 	% List of Listings (Lista de códigos)
-	\newcommand{\printTableOfCodes}{
+	\newcommand{\printListOfCodes}{
 		\pdfbookmark[0]{\lstlistlistingname}{lol}
 		\begin{KeepFromToc}
 			\lstlistoflistings
@@ -395,7 +381,12 @@
 	}
 	
 	% List of Abbreviations (Lista de abreviações)
-	\newcommand{\printTableOfAbbreviations}{
+	\newcommand{\printListOfAbbreviations}{
+		%TODO
+	}
+	
+	% List of Symbols (Lista de abreviações)
+	\newcommand{\printListOfSymbols}{
 		%TODO
 	}
 	
