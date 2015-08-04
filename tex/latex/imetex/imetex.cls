@@ -15,24 +15,48 @@
 
 \ProvidesClass{imetex}[2015/08/02 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
+\LoadClass[oneside]{abntex2}
+
+\AtBeginDocument{\makeindex}
+
+%% Dependencies
+	%% Core Packages
+	\usepackage{cmap}				% Extra mathematical symbols
+	\usepackage[utf8]{inputenc}		% UTF8 encoding
+	\usepackage[T1]{fontenc}		% Font encoding
+	\usepackage{hyperref}			% Hyperlinks and URLs
+	\usepackage{graphicx}			% Include grafics
+	\usepackage{lmodern}			% Standard font
+	\usepackage{amsthm}				% Proof Environment
+	\usepackage{amsfonts}			% Math Fonts
+	\usepackage{etoolbox}			% Booleans, Hooks & Advanced Stuff
+	\usepackage[alf]{abntex2cite}	% ABNT References styles
+
+	% Utility Packages
+	\usepackage{ime-style}			% Extra functionalities
+	\usepackage{physics}			% Physics Notations
+	\usepackage{lastpage}			% Usado pela Ficha catalográfica
+	\usepackage{indentfirst}		% Indent the first paragraph (not required by ABNT)
+	\usepackage[figure,table,lstlisting]{totalcount}
+%%
 
 %% Class Variables
 	% Conditionals
-	\newif\ifcoverRequired
-	\newif\iftitleRequired
-	\newif\ifcatalogRequired
-	\newif\ifapprovalRequired
-	\newif\ifdedicationProvided
-	\newif\ifthanksProvided
-	\newif\ifepigraphProvided
-	\newif\iftableOfContentsRequired
-	\newif\iflistOfFiguresRequired
-	\newif\iflistOfTablesRequired
-	\newif\iflistOfCodesRequired
-	\newif\iflistOfAbbreviationsRequired
-	\newif\iflistOfSymbolsRequired
-	\newif\ifabstractRequired
-	\newif\iftranslatedAbstractRequired
+	\newbool{coverRequired}
+	\newbool{titleRequired}
+	\newbool{catalogRequired}
+	\newbool{approvalRequired}
+	\newbool{dedicationProvided}
+	\newbool{thanksProvided}
+	\newbool{epigraphProvided}
+	\newbool{abstractRequired}
+	\newbool{translatedAbstractRequired}
+	\newbool{listOfFiguresWanted}
+	\newbool{listOfTablesWanted}
+	\newbool{listOfCodesWanted}
+	\newbool{listOfAbbreviationsWanted}
+	\newbool{listOfSymbolsWanted}
+	\newbool{tableOfContentsRequired}
 	
 	% Information
 	\providecommand{\imetex@department}{}
@@ -41,35 +65,44 @@
 %% Class Options
 	% Laboratory Reports (Labs & Práticas)
 	\DeclareOption{lab}{
-		\coverRequiredtrue
-		\tableOfContentsRequiredtrue
+		\booltrue{coverRequired}
+		\booltrue{tableOfContentsRequired}
 	}
 
 	% Scientific Reports (TD/IP & PIBITI/PIBIC)
 	\DeclareOption{inci}{
-		\coverRequiredtrue
-		\titleRequiredtrue
-		\tableOfContentsRequiredtrue
-		\listOfFiguresRequiredtrue
-		\listOfTablesRequiredtrue
-		\listOfCodesRequiredtrue
+		\booltrue{coverRequired}
+		\booltrue{titleRequired}
+		\booltrue{abstractRequired}
+		\booltrue{tableOfContentsRequired}
 	}
 	
 	% Final Thesis (Projeto de Fim de Curso)
 	\DeclareOption{pfc}{
-		\coverRequiredtrue
-		\titleRequiredtrue
-		\catalogRequiredtrue
-		\approvalRequiredtrue
-		\tableOfContentsRequiredtrue
-		\listOfFiguresRequiredtrue
-		\listOfTablesRequiredtrue
-		\listOfCodesRequiredtrue
-		\listOfAbbreviationsRequiredtrue
-		\listOfSymbolsRequiredtrue
-		\abstractRequiredtrue
+		\booltrue{coverRequired}
+		\booltrue{titleRequired}
+		\booltrue{catalogRequired}
+		\booltrue{approvalRequired}
+		\booltrue{abstractRequired}
+		\booltrue{translatedAbstractRequired}
+		\booltrue{tableOfContentsRequired}
 	}
 	
+	% Optional Elements
+	\DeclareOption{lof}{
+		\booltrue{listOfFiguresWanted}
+	}
+	\DeclareOption{lot}{
+		\booltrue{listOfTablesWanted}
+	}
+	\DeclareOption{loa}{
+		\booltrue{listOfAbbreviationsWanted}
+	}
+	\DeclareOption{loc}{
+		\booltrue{listOfCodesWanted}
+	}
+	
+	% Department
 	\DeclareOption{comp}{\renewcommand{\imetex@department}{Seção De Engenharia De Computação / SE8}}
 	\DeclareOption{elo}{\renewcommand{\imetex@department}{Seção De Engenharia Eletrônica / SE3}}
 	\DeclareOption{ele}{\renewcommand{\imetex@department}{Seção De Engenharia Elétrica / SE3}}
@@ -79,41 +112,73 @@
 	\DeclareOption{fc}{\renewcommand{\imetex@department}{Seção De Engenharia De Fortificação e Construção / SE?}}
 	\DeclareOption{mec}{\renewcommand{\imetex@department}{Seção De Engenharia Mecânica / SE?}}
 
-	\DeclareOption*{
-		\PassOptionsToClass{\CurrentOption}{abntex2}
+	\ProcessOptions
+%%
+
+%% Main Commands
+	% Front Matter
+	\AfterEndPreamble{
+		\frontmatter
+		\ifbool{coverRequired}{
+			\printCover
+		}{}
+		\ifbool{titleRequired}{
+			\printTitle
+		}{}
+		\ifbool{catalogRequired}{
+			\printCatalog
+		}{}
+		\ifbool{approvalRequired}{
+			\printApproval
+		}{}
+		\ifbool{dedicationProvided}{
+			\printDedication
+		}{}
+		\ifbool{thanksProvided}{
+			\printThanks
+		}{}
+		\ifbool{epigraphProvided}{
+			\printEpigraph
+		}{}
+		\ifbool{listOfFiguresWanted}{
+			\iftotalfigures
+				\printListOfFigures
+			\fi
+		}{}
+		\ifbool{listOfTablesWanted}{
+			\iftotaltables
+				\printListOfTables
+			\fi
+		}{}
+		\ifbool{listOfCodesWanted}{
+			\iftotallstlistings
+				\printListOfCodes
+			\fi
+		}{}
+		\ifbool{listOfAbbreviationsWanted}{
+			\printListOfAbbreviations
+		}{}
+		\ifbool{listOfSymbolsWanted}{
+			\printListOfSymbols
+		}{}
+		\ifbool{abstractRequired}{
+			\printAbstract
+		}{}
+		\ifbool{translatedAbstractRequired}{
+			\printTranslatedAbstract
+		}{}
+		\ifbool{tableOfContentsRequired}{
+			\printTableOfContents
+		}{}
+		\mainmatter
 	}
 	
-	\ProcessOptions\relax
-	\LoadClass[oneside]{abntex2}
-%%
-
-%% Packages
-	% Basic Packages
-	\usepackage{cmap}				% Extra mathematical symbols
-	\usepackage[utf8]{inputenc}		% UTF8 encoding
-	\usepackage[T1]{fontenc}		% Font encoding
-	\usepackage{hyperref}			% Hyperlinks and URLs
-	\usepackage{graphicx}			% Include grafics
-	\usepackage{lmodern}			% Standard font
-	\usepackage{amsthm}				% Proof Environment
-	\usepackage{amsfonts}			% Math Fonts
-	\usepackage{etoolbox}			% Toggles and \begin{document} hook
-
-	% Main Packages
-	\usepackage{ime-style}			% Extra functionalities
-	\usepackage[alf]{abntex2cite}	% ABNT References styles
-
-	% Extra Packages
-	\usepackage{physics}			% Physics Notations
-	\usepackage{lastpage}			% Usado pela Ficha catalográfica
-	\usepackage{indentfirst}		% Indent the first paragraph (not required by ABNT)
-	\usepackage[figure,table,lstlisting]{totalcount}
-%%
-
-%% Tweaks
-	\AtBeginDocument{\makeindex}
-	\AfterEndPreamble{\printFrontMatter}
-	\AtEndDocument{\printBackMatter}
+	% Back Matter
+	\AtEndDocument{
+		\backmatter
+		\pagestyle{plain}
+		\printBibliography
+	}
 %%
 
 %% Useful Fields
@@ -154,74 +219,26 @@
 	% (Banca Examinadora)
 	%TODO
 	
-	% Company
-	\providecommand{\imetex@companyName}{}
-	\newcommand{\company}[1]{
-		\renewcommand{\imetex@companyName}{#1}	
-	}
-	
 	% Preamble (Preâmbulo)
 	\providecommand{\imetex@preamble}{}
 	\newcommand{\preamble}[1]{
 		\renewcommand{\imetex@preamble}{#1}
 	}
 	
+	% Abstract (Resumo)
+	\providecommand{\imetex@abstract}{}
+	\renewcommand{\abstract}[1]{
+		\renewcommand{\imetex@abstract}{#1}
+	}
+	
+	% Referências
 	\providecommand{\imetex@bibliography}{}
 	\newcommand{\references}[1]{
 		\renewcommand{\imetex@bibliography}{#1}
 	}
 %%
 
-%% Main Commands
-	% Front Matter Elements (elementos pré-textuais)
-	\newcommand{\printFrontMatter}{
-		\frontmatter
-		\ifcoverRequired
-			\printCover
-		\fi
-		\iftitleRequired
-			\printTitle
-		\fi
-		\ifcatalogRequired
-			\printCatalog
-		\fi
-		\ifapprovalRequired
-			\printApproval
-		\fi
-		\ifdedicationProvided
-			\printDedication
-		\fi
-		\ifthanksProvided
-			\printThanks
-		\fi
-		\ifepigraphProvided
-			\printEpigraph
-		\fi
-		\iftableOfContentsRequired
-			\printTableOfContents
-		\fi
-		\iflistOfFiguresRequired
-			\iftotalfigures
-				\printListOfFigures
-			\fi
-		\fi
-		\iflistOfTablesRequired
-			\iftotaltables
-				\printListOfTables
-			\fi
-		\fi
-		\iflistOfCodesRequired
-			\iftotallstlistings
-				\printListOfCodes
-			\fi
-		\fi
-		\iflistOfAbbreviationsRequired\printListOfAbbreviations\fi
-		\iflistOfSymbolsRequired\printListOfSymbols\fi
-		\ifabstractRequired\printAbstract\fi
-		\iftranslatedAbstractRequired\printTranslatedAbstract\fi
-		\mainmatter
-	}
-
+%% Textual Elements
 	% Cover Page (Capa)
 	\newcommand{\printCover}
 	{{
@@ -402,19 +419,21 @@
 	
 	% Abstract Page (Resumo)
 	\newcommand{\printAbstract}{
-		%TODO
+		\pdfbookmark[0]{Resumo}{abs}
+		\imetex@abstract		
+		\clearpage
 	}
 	
 	% Translated Abstract Page (Resumo Traduzido)
 	\newcommand{\printTranslatedAbstract}{
-		%TODO
+		\pdfbookmark[0]{Abstract}{tabs}
+		\imetex@translatedAbstract
+		\clearpage
 	}
 	
 	%% Bibliography (Bibliografia)
-	\newcommand{\printBackMatter}
+	\newcommand{\printBibliography}
 	{
-		\backmatter
-		\pagestyle{plain}
 		\bibliography{\imetex@bibliography}
 	}
 %%

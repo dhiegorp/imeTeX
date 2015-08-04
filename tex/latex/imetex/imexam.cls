@@ -12,7 +12,7 @@
 %%
 %% Builds on `exam` class by Philip S. Hirschhorn (http://www-math.mit.edu/~psh/#ExamCls)
 
-\ProvidesClass{imexam}[2015/04/10 v0.3 imeTeX]
+\ProvidesClass{imexam}[2015/04/10 imeTeX]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[addpoints]{exam}
 

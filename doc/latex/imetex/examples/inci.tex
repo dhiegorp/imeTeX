@@ -1,4 +1,4 @@
-\documentclass[inci]{imetex}
+\documentclass[inci,lof,loc]{imetex}
 
 %% Capa
 \author{Igor Cesar Torres de Oliveira}
@@ -11,15 +11,13 @@ Iniciação em Desenvolvimento Tecnológico e Inovação do
 CNPq / Instituto Militar de Engenharia.}
 \advisor[D.C.]{Prof. Alex Garcia}
 
+%% Resumo
+\abstract{Usando a computação clássica, baseada em registradores binários e lógica determinística, uma série de problemas computacionais não possuem solução eficiente. Tais problemas são de grande interesse para a humanidade, pois estão relacionados com criptografia, inteligência artificial e problemas NP de modo geral. A computação quântica surge como uma possibilidade para a resolução de tais problemas, principalmente pelos algoritmos quânticos utilizarem processamento simultâneo ao invés de sequencial. Nesse trabalho foram estudados os primeiros algoritmos quânticos de Deutsch, Deutsch-Jozsa, Simon, Grover e Shor, bem como a fundamentação matemática para tal, e implementadas simulações dos algoritmos de Deutsch e Deutsh-Jozsa. }
+
 %% Referências
-\references{bibliografia}
+\references{bibliografia,library}
 
 \begin{document}
-
-\chapter*{Resumo}
-Usando a computação clássica, baseada em registradores binários e lógica determinística, uma série de problemas computacionais não possuem solução eficiente. Tais problemas são de grande interesse para a humanidade, pois estão relacionados com criptografia, inteligência artificial e problemas NP de modo geral. A computação quântica surge como uma possibilidade para a resolução de tais problemas, principalmente pelos algoritmos quânticos utilizarem processamento simultâneo ao invés de sequencial. Nesse trabalho foram estudados os primeiros algoritmos quânticos de Deutsch, Deutsch-Jozsa, Simon, Grover e Shor, bem como a fundamentação matemática para tal, e implementadas simulações dos algoritmos de Deutsch e Deutsh-Jozsa.
-
-\textbf{Palavras Chave:} algoritmos, computação quântica, algoritmo quântico
 
 \chapter{Introdução}
 Na computação clássica o computador é baseado na arquitetura de Von Neumann que faz uma distinção clara entre elementos de processamento e armazenamento de dados, isto é, possui processador e memória destacados por um barramento de comunicação, sendo seu processamento sequencial.
@@ -345,4 +343,5 @@ Entretanto todos os casos vistos, a simulação de um computador quântico é ma
 Portanto as simulações são úteis em caráter de prova de conceito e demonstração, porém é necessário a implementação em hardware específico para um real ganho computacional.
 
 \nocite{yanofsky}
+\nocite{Guigues}
 \end{document}
