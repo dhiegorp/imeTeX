@@ -36,7 +36,7 @@
 	\usepackage{ime-style}			% Extra functionalities
 	\usepackage{physics}			% Physics Notations
 	\usepackage{lastpage}			% Usado pela Ficha catalográfica
-	\usepackage{indentfirst}		% Indent the first paragraph (not required by ABNT)
+	\usepackage{indentfirst}		% Indent the first paragraph
 	\usepackage[figure,table,lstlisting]{totalcount}
 %%
 
@@ -98,6 +98,9 @@
 	\DeclareOption{loa}{
 		\booltrue{listOfAbbreviationsWanted}
 	}
+	\DeclareOption{los}{
+		\booltrue{listOfSymbolsWanted}
+	}
 	\DeclareOption{loc}{
 		\booltrue{listOfCodesWanted}
 	}
@@ -140,6 +143,12 @@
 		\ifbool{epigraphProvided}{
 			\printEpigraph
 		}{}
+		\ifbool{abstractRequired}{
+			\printAbstract
+		}{}
+		\ifbool{translatedAbstractRequired}{
+			\printTranslatedAbstract
+		}{}
 		\ifbool{listOfFiguresWanted}{
 			\iftotalfigures
 				\printListOfFigures
@@ -160,12 +169,6 @@
 		}{}
 		\ifbool{listOfSymbolsWanted}{
 			\printListOfSymbols
-		}{}
-		\ifbool{abstractRequired}{
-			\printAbstract
-		}{}
-		\ifbool{translatedAbstractRequired}{
-			\printTranslatedAbstract
 		}{}
 		\ifbool{tableOfContentsRequired}{
 			\printTableOfContents
@@ -219,16 +222,28 @@
 	% (Banca Examinadora)
 	%TODO
 	
-	% Preamble (Preâmbulo)
+	% Preamble
 	\providecommand{\imetex@preamble}{}
 	\newcommand{\preamble}[1]{
 		\renewcommand{\imetex@preamble}{#1}
 	}
 	
-	% Abstract (Resumo)
-	\providecommand{\imetex@abstract}{}
-	\renewcommand{\abstract}[1]{
-		\renewcommand{\imetex@abstract}{#1}
+	% Abstract & Keywords
+	\providecommand{\imetex@vernacularAbstract}{}
+	\newcommand{\vernacularAbstract}[1]{
+		\renewcommand{\imetex@vernacularAbstract}{#1}
+	}
+	\providecommand{\imetex@vernacularKeywords}{}
+	\newcommand{\vernacularKeywords}[1]{
+		\renewcommand{\imetex@vernacularKeywords}{#1}
+	}	
+	\providecommand{\imetex@vehicularAbstract}{}
+	\newcommand{\vehicularAbstract}[1]{
+		\renewcommand{\imetex@vehicularAbstract}{#1}
+	}
+	\providecommand{\imetex@vehicularKeywords}{}
+	\newcommand{\vehicularKeywords}[1]{
+		\renewcommand{\imetex@vehicularKeywords}{#1}
 	}
 	
 	% Referências
@@ -379,6 +394,22 @@
 	\newcommand{\printEpigraph}{
 		%TODO
 	}
+		
+	% Abstract Page (Resumo)
+	\newcommand{\printAbstract}{
+		\begin{resumo}
+		\imetex@vernacularAbstract
+		\end{resumo}
+	}
+	
+	% Translated Abstract Page (Resumo Traduzido)
+	\newcommand{\printTranslatedAbstract}{
+		\begin{resumo}[Abstract]
+		\begin{otherlanguage*}
+		\imetex@vehicularAbstract
+		\end{otherlanguage*}
+		\end{resumo}
+	}
 	
 	% Table of Contents (Sumário)
 	\newcommand{\printTableOfContents}{
@@ -415,20 +446,6 @@
 	% List of Symbols (Lista de abreviações)
 	\newcommand{\printListOfSymbols}{
 		%TODO
-	}
-	
-	% Abstract Page (Resumo)
-	\newcommand{\printAbstract}{
-		\pdfbookmark[0]{Resumo}{abs}
-		\imetex@abstract		
-		\clearpage
-	}
-	
-	% Translated Abstract Page (Resumo Traduzido)
-	\newcommand{\printTranslatedAbstract}{
-		\pdfbookmark[0]{Abstract}{tabs}
-		\imetex@translatedAbstract
-		\clearpage
 	}
 	
 	%% Bibliography (Bibliografia)
