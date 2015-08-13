@@ -37,7 +37,6 @@
 	\usepackage{physics}			% Physics Notations
 	\usepackage{lastpage}			% Usado pela Ficha catalográfica
 	\usepackage{indentfirst}		% Indent the first paragraph
-	\usepackage[figure,table,lstlisting]{totalcount}
 %%
 
 %% Class Variables
@@ -150,19 +149,13 @@
 			\printTranslatedAbstract
 		}{}
 		\ifbool{listOfFiguresWanted}{
-			\iftotalfigures
-				\printListOfFigures
-			\fi
+			\printListOfFigures
 		}{}
 		\ifbool{listOfTablesWanted}{
-			\iftotaltables
-				\printListOfTables
-			\fi
+			\printListOfTables
 		}{}
 		\ifbool{listOfCodesWanted}{
-			\iftotallstlistings
-				\printListOfCodes
-			\fi
+			\printListOfCodes
 		}{}
 		\ifbool{listOfAbbreviationsWanted}{
 			\printListOfAbbreviations
