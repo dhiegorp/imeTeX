@@ -399,6 +399,11 @@
 	\newcommand{\printAbstract}{
 		\begin{resumo}
 		\imetex@vernacularAbstract
+		\vspace{\onelineskip}
+		\ifdefempty{\imetex@vernacularKeywords}{
+		}{
+			\noindent\textbf{Palavras-chaves}: \imetex@vernacularKeywords
+		}
 		\end{resumo}
 	}
 	
@@ -407,6 +412,11 @@
 		\begin{resumo}[Abstract]
 		\begin{otherlanguage*}
 		\imetex@vehicularAbstract
+		\vspace{\onelineskip}
+		\ifdefempty{\imetex@vehicularKeywords}{
+		}{
+			\noindent\textbf{Keywords}: \imetex@vehicularKeywords
+		}
 		\end{otherlanguage*}
 		\end{resumo}
 	}
