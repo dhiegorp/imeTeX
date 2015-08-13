@@ -201,19 +201,30 @@
 	% Advisors
 	\providecommand{\imetex@advisorName}{}
 	\providecommand{\imetex@advisorTitle}{}
-	\newcommand{\advisor}[2][]{
+	\newcommand{\advisor}[2][D.C.]{
 		\renewcommand{\imetex@advisorTitle}{#1}
 		\renewcommand{\imetex@advisorName}{#2}
 	}
 	\providecommand{\imetex@coadvisorName}{}
 	\providecommand{\imetex@coadvisorTitle}{}
-	\newcommand{\coadvisor}[2][]{
+	\newcommand{\coadvisor}[2][D.C.]{
 		\renewcommand{\imetex@coadvisorTitle}{#1}
 		\renewcommand{\imetex@coadvisorName}{#2}
 	}
 	
-	% (Banca Examinadora)
-	%TODO
+	% Thesis Comittee
+	\providecommand{\imetex@firstComitteeMemberName}{}
+	\providecommand{\imetex@firstComitteeMemberTitle}{}
+	\providecommand{\imetex@secondComitteeMemberName}{}
+	\providecommand{\imetex@secondComitteeMemberTitle}{}
+	\providecommand{\imetex@firstComitteeMember}[2][D.C.]{
+		\renewcommand{\imetex@firstComitteeMemberTitle}{#1}
+		\renewcommand{\imetex@firstComitteeMemberName}{#2}
+	}
+	\providecommand{\imetex@secondComitteeMember}[2][D.C.]{
+		\renewcommand{\imetex@secondComitteeMemberTitle}{#1}
+		\renewcommand{\imetex@secondComitteeMemberName}{#2}
+	}
 	
 	% Preamble
 	\providecommand{\imetex@preamble}{}
@@ -239,7 +250,7 @@
 		\renewcommand{\imetex@vehicularKeywords}{#1}
 	}
 	
-	% Referências
+	% References
 	\providecommand{\imetex@bibliography}{}
 	\newcommand{\references}[1]{
 		\renewcommand{\imetex@bibliography}{#1}
@@ -292,8 +303,8 @@
 		\begin{minipage}{.5\textwidth}
 			\SingleSpacing
 			\par \imetex@preamble
-			\par \ifNotEmpty{\imetex@advisorName}{Orientador: \imetex@advisorName\ - \imetex@advisorTitle}
-			\par \ifNotEmpty{\imetex@coadvisorName}{Co-orientador: \imetex@coadvisorName\ - \imetex@coadvisorTitle}
+			\par \ifdefempty{\imetex@advisorName}{}{Orientador: \imetex@advisorName\ - \imetex@advisorTitle}
+			\par \ifdefempty{\imetex@coadvisorName}{}{Co-orientador: \imetex@coadvisorName\ - \imetex@coadvisorTitle}
 		\end{minipage}
 
 		\vspace*{\fill}
