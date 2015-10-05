@@ -1,5 +1,7 @@
 ﻿# imeTeX ![Github Releases](https://img.shields.io/github/downloads/IME-SE8/imeTeX/latest/total.svg) ![GitHub release](https://img.shields.io/github/release/IME-SE8/imeTeX.svg) ![GitHub tag](https://img.shields.io/github/tag/IME-SE8/imeTeX.svg) ![GitHub issues](https://img.shields.io/github/issues/IME-SE8/imeTeX.svg)
 
+[![Join the chat at https://gitter.im/IME-SE8/imeTeX](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/IME-SE8/imeTeX?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Modelos padrões de LaTeX para trabalhos acadêmicos do Instituto Militar de Engenharia.
 
  * [Instalação](https://github.com/IME-SE8/imeTeX/wiki/Instala%C3%A7%C3%A3o)
